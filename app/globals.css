@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Token system — Academia de Liderazgo Andritz Separation
+   Capa de interfaz  = Andritz  (azul #006CAF sobre hueso frío)
+   Capa de datos     = Adapsys  (cyan / teal / magenta)
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-andritz: #006caf;
+  --color-andritz-oscuro: #005a92;
+  --color-tinta: #0c2a3e;
+  --color-tinta-suave: #3d5568;
+  --color-hueso: #f5f8fa;
+  --color-linea: #d7e0e7;
+
+  --color-cyan-ad: #00b8b8;
+  --color-teal-ad: #006379;
+  --color-magenta-ad: #c20c5b;
+  --color-neutro-dato: #b9c9d3;
+
+  --color-banda-baja: #f3e3ea;
+  --color-banda-media: #eef3f0;
+  --color-banda-alta: #dff2f2;
+
+  --font-display: "Archivo Variable", "Archivo", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+body {
+  background-color: var(--color-hueso);
+  color: var(--color-tinta);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco visible de teclado — anillo azul Andritz en toda la plataforma */
+:focus-visible {
+  outline: 2px solid var(--color-andritz);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background-color: var(--color-andritz);
+  color: #ffffff;
+}
+
+/* Eyebrow: etiqueta mono en mayúsculas, voz de la capa de datos */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Layout de lectura para materiales largos */
+.lectura p {
+  margin-bottom: 1.15em;
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+
+/* Animación del trazo de la Ruta A→B */
+@keyframes trazo-ruta {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.ruta-trazo {
+  transform-origin: left center;
+  animation: trazo-ruta 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ruta-trazo {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
