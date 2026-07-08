@@ -1,6 +1,6 @@
-# Academia de Liderazgo · Andritz Separation
+# Academia de Liderazgo · Andritz
 
-Aula virtual / repositorio del programa de liderazgo de Andritz Separation
+Aula virtual / repositorio del programa de liderazgo de Andritz
 (Liderazgo Adaptativo, Heifetz). Plataforma provista por **Adapsys**.
 
 No es e-learning: es un repositorio ordenado de material + calendario +

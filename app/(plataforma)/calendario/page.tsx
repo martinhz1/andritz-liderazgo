@@ -50,7 +50,10 @@ export default async function CalendarioPage() {
                   <h2 className="mt-2 font-display text-xl font-bold tracking-tight">
                     {modulo.titulo}
                   </h2>
-                  <p className="mt-1 max-w-xl text-sm italic text-tinta-suave">
+                  <p className="mt-2 max-w-xl text-sm text-tinta">
+                    {modulo.descripcion}
+                  </p>
+                  <p className="mt-2 max-w-xl text-sm italic text-tinta-suave">
                     “{modulo.preguntaGuia}”
                   </p>
                 </div>

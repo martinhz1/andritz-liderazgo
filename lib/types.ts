@@ -1,4 +1,4 @@
-// Modelo de datos de la Academia de Liderazgo Andritz Separation.
+// Modelo de datos de la Academia de Liderazgo Andritz.
 // La capa de datos vive detrás de lib/content.ts — la UI nunca importa /data directamente.
 
 export type EstadoSesion = "realizada" | "proxima" | "programada";

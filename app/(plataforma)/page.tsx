@@ -26,7 +26,7 @@ export default async function InicioPage() {
       {/* ── Hero: la ruta A→B ── */}
       <section aria-labelledby="hero-titulo">
         <p className="eyebrow text-tinta-suave">
-          Academia de Liderazgo · Andritz Separation
+          Academia de Liderazgo · Andritz
         </p>
         <h1
           id="hero-titulo"

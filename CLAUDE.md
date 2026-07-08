@@ -1,6 +1,6 @@
-# CLAUDE.md — Academia de Liderazgo Andritz Separation
+# CLAUDE.md — Academia de Liderazgo Andritz
 
-Aula virtual / repositorio del programa de liderazgo de Andritz Separation,
+Aula virtual / repositorio del programa de liderazgo de Andritz,
 provista por Adapsys (consultora de transformación organizacional). Programa
 basado en Liderazgo Adaptativo (Heifetz): módulos = trayecto del estado A
 (realidad) al estado B (aspiración / "La Gran Oportunidad").

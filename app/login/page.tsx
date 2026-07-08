@@ -29,7 +29,7 @@ export default function LoginPage() {
         </div>
 
         <p className="eyebrow text-tinta-suave">
-          Academia de Liderazgo · Andritz Separation
+          Academia de Liderazgo · Andritz
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold leading-tight tracking-tight">
           Juntos transformamos

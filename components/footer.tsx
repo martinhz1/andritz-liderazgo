@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-8 md:flex-row md:items-center md:px-6">
         <div>
           <p className="font-display text-sm font-semibold">
-            Academia de Liderazgo · Andritz Separation
+            Academia de Liderazgo · Andritz
           </p>
           <p className="mt-1 font-mono text-xs text-white/60">
             Programa de liderazgo centrado en resultados

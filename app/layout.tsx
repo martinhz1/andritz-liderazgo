@@ -7,9 +7,9 @@ import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Academia de Liderazgo · Andritz Separation",
+  title: "Academia de Liderazgo · Andritz",
   description:
-    "Aula virtual de la Academia de Liderazgo de Andritz Separation. Plataforma provista por Adapsys.",
+    "Aula virtual de la Academia de Liderazgo de Andritz. Plataforma provista por Adapsys.",
 };
 
 export default function RootLayout({
