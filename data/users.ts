@@ -1,44 +1,164 @@
 import type { Usuario } from "@/lib/types";
 
 // Usuarios de la plataforma. Se guarda SOLO el hash PBKDF2 (ver lib/password.ts),
-// nunca la contraseña en texto plano. Para agregar usuarios se genera el hash
-// con el mismo esquema; las contraseñas se entregan a cada persona por un canal
-// seguro y no se versionan.
+// nunca la contraseña en texto plano. El login normaliza el usuario (punto,
+// guion o espacio son equivalentes), así cada persona entra con lo que va antes
+// del @ de su correo. Contraseñas entregadas por canal seguro, no versionadas.
 export const USERS: Usuario[] = [
   {
     usuario: "participante",
-    hash: "pbkdf2$120000$XS8zZgyfjHA8-wNctvqLDQ$1WyIuFWbvv8EQu7lukVVXSEu65yxLHxNthwuvOopJnQ",
+    hash: "pbkdf2$120000$fx-hwiD0XaVLK5Dx2EAD9g$-gfcWXCSEsD9DHizvLHqfPNyjOOEUF20uNQse_X1wTw",
     rol: "participante",
     nombre: "Líder Andritz",
   },
   {
     usuario: "admin",
-    hash: "pbkdf2$120000$iLrujlrXffDO8gMGV8AePw$xKvsIDT1yEfRExuBq5ww0nyrrgH1hS0TA2XkaL2GhB0",
+    hash: "pbkdf2$120000$qAdWs9IuiQ48cbh8KtD7QA$Gn7rOrBOFtDPlb2ClY-jwO4g422b6vfJccxmSzMiC6Q",
     rol: "admin",
     nombre: "Equipo Adapsys",
   },
   {
     usuario: "isidora-diaz",
-    hash: "pbkdf2$120000$1hmvgbmy1d8k-eiCNpuVIA$Si3_W9n4guk-LWoXR7BqXfo8tpFIWnDKOav95yWblb0",
+    hash: "pbkdf2$120000$kK1HBQVduEKzBa9ncvG0VQ$UFVyugPWfHEj_KsSH3ILcP4-tCplnxbgIXsHpux3x-8",
     rol: "admin",
     nombre: "Isidora Díaz",
   },
   {
     usuario: "marcela-ferrari",
-    hash: "pbkdf2$120000$KVAa92K-dO7qKzGyq8o8DA$uQ0MyoyHmmMVAByEaIpqgoxxZlrDowuIzNw5rTD0hzs",
+    hash: "pbkdf2$120000$eptZwrBd1vC35icNZzgHOw$Siwlr4d63SGs0aT25pk0D2Fyy55_kjozNtlYSm5pdeE",
     rol: "admin",
     nombre: "Marcela Ferrari",
   },
   {
     usuario: "magdalena-toral",
-    hash: "pbkdf2$120000$aEQ6mDzgZad0Vg63py2Dhg$uNkdCcHFKX8aC5WPaWeVZl8C0LjZGVxj3Vdq8zaKc0s",
+    hash: "pbkdf2$120000$A3rtlAIhQ5wLuj1Oxau5SQ$_lqh5tmpSKdgBP1uHNICapOY3PeAWhxwKhbMpxQj-J0",
     rol: "admin",
     nombre: "Magdalena Toral",
   },
   {
     usuario: "martin-henriquez",
-    hash: "pbkdf2$120000$zhVkl0RQhgdQApOkc-DdyQ$-TVKgyOfYBoxFJem5uyiAwnbTWhgt73zyqSNR9ER2Jc",
+    hash: "pbkdf2$120000$7JBfjshwXcF-fzsySjgbEg$aFDMcbtk0f0Hqu5WrNTYni9syWNAljqkmWfs_lJnHuM",
     rol: "admin",
     nombre: "Martín Henríquez",
+  },
+  {
+    usuario: "alvaro-lassoportilla",
+    hash: "pbkdf2$120000$-Yrq3tIs3B_P1gLQUd1vvg$qOIYzwwuCx1Fo35CUk4x5TK62jeu3wI6augFGuWN_qk",
+    rol: "participante",
+    nombre: "Álvaro Lasso Portilla",
+  },
+  {
+    usuario: "angelica-aravena",
+    hash: "pbkdf2$120000$sspWNEeDd90cp_9XxHrzoQ$RMcv4j2Arz7JGyVHy_2t-z1RpUhgDA0VP-lcAErstNw",
+    rol: "participante",
+    nombre: "Angélica Aravena",
+  },
+  {
+    usuario: "benjamin-olivares",
+    hash: "pbkdf2$120000$9hjStsvOXx4IF_zL5zlCVw$Q0hbhS7ntftf1n8iX9jbqlzMu9SQlD5HzJ4HusBU7Ow",
+    rol: "participante",
+    nombre: "Benjamín Olivares",
+  },
+  {
+    usuario: "catalina-herrera",
+    hash: "pbkdf2$120000$aFARvlC5v6siPrtXfqjaww$2-cBTvfKtLdAjGsRGulyYHlE4Qp_lOGXisNwX9m_Ekc",
+    rol: "participante",
+    nombre: "Catalina Herrera",
+  },
+  {
+    usuario: "daniel-pinto",
+    hash: "pbkdf2$120000$ogpDBI9XT0l6ujvp0p3Xuw$MRElIm_zJtMO-loQFUdD2HKuisoaZxRwIoDWO5yDYvc",
+    rol: "participante",
+    nombre: "Daniel Pinto",
+  },
+  {
+    usuario: "diego-iraira",
+    hash: "pbkdf2$120000$nEiqNUKUACE6GlbG8Gp4sA$muJS7k1iP-2OqPdARRfCU3ibMosjXyL7HVEdQaZ68_0",
+    rol: "participante",
+    nombre: "Diego Iraira",
+  },
+  {
+    usuario: "fernando-tobar",
+    hash: "pbkdf2$120000$ratlBAjHj6-LgsBOtxtTkQ$6VCBJkwxcl1hCuQHUW7YUwHvpqikQ-2JWat0wKRx5Hk",
+    rol: "participante",
+    nombre: "Fernando Tobar",
+  },
+  {
+    usuario: "franco-pavez",
+    hash: "pbkdf2$120000$ctIIiIeqAxxsKjT1k2jcLA$KwZ72YcNxhvExVdN9Xvmjtr5WJwXyWOfG9k3G6ozV60",
+    rol: "participante",
+    nombre: "Franco Pávez",
+  },
+  {
+    usuario: "gonzalo-iriarte",
+    hash: "pbkdf2$120000$Y_-u7TgP5_dJCuQDMp4dEw$9f1TT2nOKI-TotLPEiEJyxBfDupDIqrd8gKngdVXVMI",
+    rol: "participante",
+    nombre: "Gonzalo Iriarte",
+  },
+  {
+    usuario: "harold-munoz",
+    hash: "pbkdf2$120000$8Ss95jTFXEgwMmRKK_xUDQ$C27JfW3G7rJk7QgnSME01C9fruXTrydeK0gGHLCUKTY",
+    rol: "participante",
+    nombre: "Harold Muñoz",
+  },
+  {
+    usuario: "israel-ortiz",
+    hash: "pbkdf2$120000$UdHpVFWpDh_QYK5La63XlQ$Bld7e6US6SYgLAF2EtNb-X3sme28atJfaYwxuZtGHd0",
+    rol: "participante",
+    nombre: "Israel Ortiz",
+  },
+  {
+    usuario: "ivan-cobianlezama",
+    hash: "pbkdf2$120000$ckDL7J4nv1UJTwNO9IUhKw$pK7Q26zNoT_mmqpdWuk2MuCnc02IjaUKiLXFWh_n80I",
+    rol: "participante",
+    nombre: "Iván Cobián Lezama",
+  },
+  {
+    usuario: "jorge-collado",
+    hash: "pbkdf2$120000$IUQsIdu_7WN1CTMllTmGwQ$SuS730nwKGqRP4xZcFCLZlytLhY_30Ya25Ekl7dTGZk",
+    rol: "participante",
+    nombre: "Jorge Collado",
+  },
+  {
+    usuario: "jose-fonseca",
+    hash: "pbkdf2$120000$w0ByUW5fdZz-yQMEwWc_TQ$6PN_ZBY2RWkoOO7gl6NlP1zY8JThWxPAlEWdE3ZolBA",
+    rol: "participante",
+    nombre: "José Fonseca",
+  },
+  {
+    usuario: "julio-mosaja",
+    hash: "pbkdf2$120000$FF-iuDpUoOhTCDq2UezKvw$Z5Y3p2dVRhSmeAvvNIbtLP3E4uqOZNag75xhDpDIkHU",
+    rol: "participante",
+    nombre: "Julio Mosaja",
+  },
+  {
+    usuario: "paulino-concha",
+    hash: "pbkdf2$120000$beo95X7LzT3uY26XF6n0gQ$9hXRzI8ziBwGcMuaL5kNA5nLTJ5HghOXNfe1aQHc5S4",
+    rol: "participante",
+    nombre: "Paulino Concha",
+  },
+  {
+    usuario: "paulo-zunzarrem",
+    hash: "pbkdf2$120000$HNtfdly4SDNRkaXS7NabxQ$0LszdUb78LgnvqSd1ZMstE-Sse13CpGrHJaCTTbFutw",
+    rol: "participante",
+    nombre: "Paulo Zunzarrem",
+  },
+  {
+    usuario: "robert-vonloebenstein",
+    hash: "pbkdf2$120000$RqtyL2w8Xg7rAX41jOiFVw$PZWvWEd97f9GhpHbfwrjsWLSK23pXSvp_XuI5_Fdvr0",
+    rol: "participante",
+    nombre: "Robert von Loebenstein",
+  },
+  {
+    usuario: "sergio-pinto",
+    hash: "pbkdf2$120000$33jiQPkT1m9X_3nCFUqZvQ$hCD5YbIc7HYORTHTQl-DT-y0NldJzgZzJWpHVDZxOw0",
+    rol: "participante",
+    nombre: "Sergio Pinto",
+  },
+  {
+    usuario: "victor-calderon",
+    hash: "pbkdf2$120000$uu42CV5WmY6pgKK_naRKVQ$mCLCA8eMqb0sAFXOWYlaSljlatNQ-oqikfLdIRk6itg",
+    rol: "participante",
+    nombre: "Víctor Calderón",
   },
 ];

@@ -12,7 +12,16 @@ export async function POST(req: NextRequest) {
   }
 
   const { usuario, password } = body;
-  const user = USERS.find((u) => u.usuario === usuario?.trim().toLowerCase());
+  // Normaliza el usuario a forma canónica: minúsculas y punto/espacio/guion
+  // bajo → un solo guion. Así "alvaro.lassoportilla", "alvaro-lassoportilla" y
+  // "Alvaro Lassoportilla" son equivalentes (la parte antes del @ del correo).
+  const usuarioNorm = (usuario ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[\s._]+/g, "-")
+    .replace(/-{2,}/g, "-")
+    .replace(/^-+|-+$/g, "");
+  const user = USERS.find((u) => u.usuario === usuarioNorm);
   const valido = user ? await verifyPassword(password ?? "", user.hash) : false;
 
   if (!user || !valido) {
