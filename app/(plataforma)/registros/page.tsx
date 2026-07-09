@@ -1,6 +1,7 @@
 import { Galeria } from "@/components/galeria";
 import { Badge } from "@/components/ui/badge";
 import { getModulos, getRegistros, getSesiones } from "@/lib/content";
+import { fechaCorta } from "@/lib/types";
 
 export const metadata = {
   title: "Registros gráficos · Academia de Liderazgo Andritz",
@@ -34,7 +35,9 @@ export default async function RegistrosPage() {
                 <h2 className="font-display text-xl font-bold tracking-tight">
                   {registro.titulo}
                 </h2>
-                {sesion && <Badge variant="outline">{sesion.fecha}</Badge>}
+                {sesion?.fecha && (
+                  <Badge variant="outline">{fechaCorta(sesion.fecha)}</Badge>
+                )}
                 {modulo && (
                   <span className="font-mono text-xs text-tinta-suave">
                     Módulo {String(modulo.numero).padStart(2, "0")}

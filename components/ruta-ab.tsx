@@ -114,8 +114,8 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
                     {estado === "proxima" && (
                       <span className={acento}>
                         {" · "}
-                        {sesion && sesion.fecha !== "Por confirmar"
-                          ? sesion.fecha
+                        {sesion?.fecha
+                          ? `${sesion.fecha.dia} ${sesion.fecha.mes.toLowerCase()}`
                           : "próxima"}
                       </span>
                     )}
@@ -152,8 +152,8 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
                 {estado === "proxima" && (
                   <span className={acento}>
                     {" · "}
-                    {sesion && sesion.fecha !== "Por confirmar"
-                      ? sesion.fecha
+                    {sesion?.fecha
+                      ? `${sesion.fecha.dia} ${sesion.fecha.mes.toLowerCase()}`
                       : "próxima"}
                   </span>
                 )}

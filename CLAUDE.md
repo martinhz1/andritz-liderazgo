@@ -40,7 +40,11 @@ plataforma acompaña antes/durante/después.
 6. **Elemento signature = Ruta A→B** (`components/ruta-ab.tsx`). Codifica el
    estado real del programa (realizada/próxima/programada desde
    `data/sesiones.ts`). Mantener el resto de la UI disciplinada: sin barras
-   decorativas, sin gradientes, sin adornos que no informen.
+   decorativas, sin adornos que no informen. Excepciones aprobadas al «sin
+   gradientes»: la franja de acento y el tile/avatar del header
+   (`components/nav.tsx`) y el glow del hero de Inicio y de la banda de
+   contexto — todos sutiles y en paleta Andritz. No introducir gradientes
+   nuevos fuera de esos.
 7. **Accesibilidad**: foco visible (anillo azul Andritz), `prefers-reduced-motion`
    respetado (ver `globals.css`), textos alternativos, responsive real.
 
@@ -54,11 +58,8 @@ npm run start    # producción local
 
 ## TODO pendientes
 
-- [ ] Fechas, horarios y lugares reales de las sesiones (`data/sesiones.ts`)
-- [ ] Fotos reales de la jornada M1 → `/public/registros/m1/` +
-      actualizar `data/registros.ts`
-- [ ] Datos reales de la encuesta de levantamiento previo
-      (`data/encuesta.ts`, poner `esEjemplo: false`)
+- [ ] Confirmar el lugar real del Módulo 1 realizado (`data/sesiones.ts`, hoy
+      "Oficinas Andritz, Santiago"; M2–M5 en SAN Room Management)
 - [ ] Migrar capa de datos a Google Sheets (reimplementar `lib/content.ts`;
       patrón de referencia: lectura vía `gviz/tq` o API con service account)
 - [ ] `SESSION_SECRET` real en Vercel y eliminar fallback dev de

@@ -114,6 +114,26 @@ body {
   }
 }
 
+/* Panel lateral de detalle (Calendario) */
+@keyframes surgir-lateral {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ruta-trazo {
     animation: none;

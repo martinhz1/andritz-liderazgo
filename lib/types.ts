@@ -38,14 +38,51 @@ export interface Material {
   secciones: SeccionMaterial[];
 }
 
+export interface FechaSesion {
+  dia: number;
+  /** abreviatura en mayúsculas, p. ej. "JUL" */
+  mes: string;
+  /** nombre completo en minúscula, p. ej. "julio" */
+  mesLargo: string;
+  /** abreviatura, p. ej. "jue" */
+  diaSemana: string;
+  anio: number;
+  /** hora local America/Santiago, YYYYMMDDTHHMMSS (para enlaces de calendario) */
+  inicio: string;
+  fin: string;
+}
+
 export interface Sesion {
   id: string;
   moduloId: string;
-  /** dd/mm/aa — TODO: reemplazar por fechas reales */
-  fecha: string;
+  /** null mientras la fecha no esté confirmada */
+  fecha: FechaSesion | null;
   horario: string;
   lugar: string;
+  direccion?: string;
   estado: EstadoSesion;
+}
+
+/** "23 jul 2026" */
+export function fechaCorta(f: FechaSesion): string {
+  return `${f.dia} ${f.mes.toLowerCase()} ${f.anio}`;
+}
+
+/** "Jueves 23 de julio de 2026" */
+export function fechaLarga(f: FechaSesion): string {
+  const dias: Record<string, string> = {
+    lun: "Lunes",
+    mar: "Martes",
+    mié: "Miércoles",
+    mie: "Miércoles",
+    jue: "Jueves",
+    vie: "Viernes",
+    sáb: "Sábado",
+    sab: "Sábado",
+    dom: "Domingo",
+  };
+  const prefijo = dias[f.diaSemana] ? `${dias[f.diaSemana]} ` : "";
+  return `${prefijo}${f.dia} de ${f.mesLargo} de ${f.anio}`;
 }
 
 export interface Foto {

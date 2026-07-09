@@ -10,6 +10,7 @@ import {
   getModulo,
   getGranOportunidad,
 } from "@/lib/content";
+import { fechaCorta } from "@/lib/types";
 
 // Curva de entrada compartida por los bloques (fade + subida escalonada).
 const surgir = (delay: string) =>
@@ -54,10 +55,9 @@ export default async function InicioPage() {
   // La maqueta usa el "salto" de valor (párrafo 2) como cuerpo de la tarjeta;
   // cae al primero si el informe cambiara de estructura.
   const cuerpoOportunidad = granOportunidad?.[1] ?? granOportunidad?.[0];
-  const fechaProxima =
-    proxima && proxima.fecha !== "Por confirmar"
-      ? `${proxima.fecha} · ${proxima.horario}`
-      : "Por confirmar";
+  const fechaProxima = proxima?.fecha
+    ? `${fechaCorta(proxima.fecha)} · ${proxima.horario}`
+    : "Por confirmar";
 
   return (
     <div>
