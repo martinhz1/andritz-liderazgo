@@ -3,7 +3,6 @@
 import {
   Bar,
   BarChart,
-  CartesianGrid,
   Cell,
   LabelList,
   ReferenceLine,
@@ -11,13 +10,20 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { bandaDe } from "@/lib/types";
+import { bandaDe, type BandaPercepcion } from "@/lib/types";
 
 // Capa de datos = paleta Adapsys (el azul Andritz no entra a los gráficos)
 export const COLOR_FAVORABLE = "#00B8B8";
 export const COLOR_NEUTRAL = "#B9C9D3";
 export const COLOR_DESFAVORABLE = "#C20C5B";
 const COLOR_EJE = "#3D5568";
+
+// Color de marca por banda de favorabilidad (Baja alerta · Media · Alta).
+export const COLOR_BANDA: Record<BandaPercepcion, string> = {
+  Baja: "#C20C5B",
+  Media: "#00B8B8",
+  Alta: "#006379",
+};
 
 export interface FilaDimension {
   id: string;
@@ -37,7 +43,6 @@ export function FavorabilidadDimensiones({ datos }: { datos: FilaDimension[] }) 
           margin={{ top: 8, right: 56, bottom: 8, left: 8 }}
           barCategoryGap={18}
         >
-          <CartesianGrid horizontal={false} stroke="#D7E0E7" strokeDasharray="2 4" />
           <XAxis
             type="number"
             domain={[0, 100]}
@@ -80,13 +85,9 @@ export function FavorabilidadDimensiones({ datos }: { datos: FilaDimension[] }) 
               fontFamily: "IBM Plex Mono",
             }}
           />
-          <Bar dataKey="favorabilidad" radius={[0, 2, 2, 0]} maxBarSize={30}>
+          <Bar dataKey="favorabilidad" radius={[0, 4, 4, 0]} maxBarSize={24}>
             {datos.map((d) => (
-              <Cell
-                key={d.id}
-                fill={bandaDe(d.favorabilidad) === "Baja" ? COLOR_DESFAVORABLE : COLOR_FAVORABLE}
-                fillOpacity={bandaDe(d.favorabilidad) === "Baja" ? 0.85 : 1}
-              />
+              <Cell key={d.id} fill={COLOR_BANDA[bandaDe(d.favorabilidad)]} />
             ))}
             <LabelList
               dataKey="favorabilidad"
