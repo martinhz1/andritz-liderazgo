@@ -15,4 +15,30 @@ export const USERS: Usuario[] = [
     rol: "admin",
     nombre: "Equipo Adapsys",
   },
+  // Admins nombrados (ven Resultados de encuesta). El login normaliza el
+  // usuario a minúsculas, así que puede escribirse con o sin mayúsculas.
+  {
+    usuario: "isidora-diaz",
+    password: "H2YudseRGK26tL",
+    rol: "admin",
+    nombre: "Isidora Díaz",
+  },
+  {
+    usuario: "marcela-ferrari",
+    password: "idHSDt5YMGNAd2",
+    rol: "admin",
+    nombre: "Marcela Ferrari",
+  },
+  {
+    usuario: "magdalena-toral",
+    password: "d5EVfZMycNxiBa",
+    rol: "admin",
+    nombre: "Magdalena Toral",
+  },
+  {
+    usuario: "martin-henriquez",
+    password: "SXAMbmasaWMWbL",
+    rol: "admin",
+    nombre: "Martín Henríquez",
+  },
 ];
