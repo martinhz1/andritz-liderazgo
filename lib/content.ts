@@ -8,6 +8,7 @@ import { REGISTROS } from "@/data/registros";
 import { ENCUESTA } from "@/data/encuesta";
 import type {
   Encuesta,
+  EstadoSesion,
   Material,
   Modulo,
   RegistroGrafico,
@@ -17,6 +18,30 @@ import type {
 
 export async function getModulos(): Promise<Modulo[]> {
   return [...MODULOS].sort((a, b) => a.numero - b.numero);
+}
+
+export interface ModuloConEstado extends Modulo {
+  estado: EstadoSesion;
+}
+
+/**
+ * Módulos con su estado en la ruta (realizada / próxima / programada),
+ * derivado de la próxima sesión — no es un dato del modelo Modulo. Lo usa el
+ * rail del Repositorio y cualquier vista que necesite ubicar el avance.
+ */
+export async function getModulosConEstado(): Promise<ModuloConEstado[]> {
+  const [modulos, proxima] = await Promise.all([getModulos(), getProximaSesion()]);
+  const numeroProximo =
+    modulos.find((m) => m.id === proxima?.moduloId)?.numero ?? Infinity;
+  return modulos.map((m) => ({
+    ...m,
+    estado:
+      m.numero < numeroProximo
+        ? "realizada"
+        : m.numero === numeroProximo
+          ? "proxima"
+          : "programada",
+  }));
 }
 
 export async function getModulo(id: string): Promise<Modulo | undefined> {

@@ -1,178 +1,95 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { getMateriales, getModulos } from "@/lib/content";
-import type { TipoMaterial } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { getMateriales, getModulosConEstado } from "@/lib/content";
+import { RailModulos } from "@/components/repositorio/rail-modulos";
+import { RepositorioResultados } from "@/components/repositorio/resultados";
 
 export const metadata = { title: "Repositorio · Academia de Liderazgo Andritz" };
-
-const TIPOS: { valor: TipoMaterial; etiqueta: string }[] = [
-  { valor: "definiciones", etiqueta: "Definiciones" },
-  { valor: "informe", etiqueta: "Informe de sesión" },
-  { valor: "lecturas", etiqueta: "Lecturas" },
-  { valor: "tareas", etiqueta: "Tareas" },
-];
-
-const ETIQUETA_TIPO: Record<TipoMaterial, string> = {
-  definiciones: "Definiciones",
-  informe: "Informe de sesión",
-  lecturas: "Lectura",
-  tareas: "Tarea",
-};
-
-function urlFiltro(modulo?: string, tipo?: string) {
-  const params = new URLSearchParams();
-  if (modulo) params.set("modulo", modulo);
-  if (tipo) params.set("tipo", tipo);
-  const qs = params.toString();
-  return qs ? `/repositorio?${qs}` : "/repositorio";
-}
 
 export default async function RepositorioPage({
   searchParams,
 }: {
-  searchParams: Promise<{ modulo?: string; tipo?: string }>;
+  searchParams: Promise<{ modulo?: string }>;
 }) {
-  const { modulo, tipo } = await searchParams;
-  const modulos = await getModulos();
-  const tipoValido = TIPOS.some((t) => t.valor === tipo)
-    ? (tipo as TipoMaterial)
-    : undefined;
-  const moduloValido = modulos.some((m) => m.id === modulo) ? modulo : undefined;
+  const { modulo } = await searchParams;
+  const [modulos, materialesTodos] = await Promise.all([
+    getModulosConEstado(),
+    getMateriales(),
+  ]);
 
-  const materiales = await getMateriales({
-    moduloId: moduloValido,
-    tipo: tipoValido,
-  });
+  const moduloActivo = modulos.some((m) => m.id === modulo) ? modulo : undefined;
+  const moduloCtx = modulos.find((m) => m.id === moduloActivo);
+
+  // Contadores por módulo (estables: ignoran tipo/búsqueda).
+  const counts: Record<string, number> = {};
+  for (const mat of materialesTodos) {
+    counts[mat.moduloId] = (counts[mat.moduloId] ?? 0) + 1;
+  }
+  const numerosModulo = Object.fromEntries(modulos.map((m) => [m.id, m.numero]));
+
+  const materialesPanel = moduloActivo
+    ? materialesTodos.filter((m) => m.moduloId === moduloActivo)
+    : materialesTodos;
 
   return (
     <div>
-      <p className="eyebrow text-tinta-suave">Repositorio</p>
-      <h1 className="mt-2 font-display text-3xl font-bold tracking-tight md:text-4xl">
-        Material del programa
-      </h1>
-      <p className="mt-2 max-w-2xl text-tinta-suave">
-        Todo el material de la academia, organizado por módulo y tipo. Antes de
-        cada sesión encontrarás aquí las lecturas y tareas correspondientes.
-      </p>
-
-      {/* ── Filtros (links SSR, sin estado client) ── */}
-      <div className="mt-8 space-y-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="w-16 font-mono text-xs uppercase tracking-wide text-tinta-suave">
-            Módulo
-          </span>
-          <FiltroLink
-            activo={!moduloValido}
-            href={urlFiltro(undefined, tipoValido)}
-          >
-            Todos
-          </FiltroLink>
-          {modulos.map((m) => (
-            <FiltroLink
-              key={m.id}
-              activo={moduloValido === m.id}
-              href={urlFiltro(m.id, tipoValido)}
-            >
-              {String(m.numero).padStart(2, "0")} · {m.titulo}
-            </FiltroLink>
-          ))}
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="w-16 font-mono text-xs uppercase tracking-wide text-tinta-suave">
-            Tipo
-          </span>
-          <FiltroLink activo={!tipoValido} href={urlFiltro(moduloValido)}>
-            Todos
-          </FiltroLink>
-          {TIPOS.map((t) => (
-            <FiltroLink
-              key={t.valor}
-              activo={tipoValido === t.valor}
-              href={urlFiltro(moduloValido, t.valor)}
-            >
-              {t.etiqueta}
-            </FiltroLink>
-          ))}
-        </div>
+      <div className="animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.04s_both]">
+        <p className="eyebrow text-andritz">Repositorio</p>
+        <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">
+          Material del programa
+        </h1>
+        <p className="mt-3 max-w-xl text-tinta-suave">
+          Todo el material de la academia, organizado por módulo y tipo. Antes de
+          cada sesión encontrarás aquí las lecturas y tareas correspondientes.
+        </p>
       </div>
 
-      {/* ── Resultados ── */}
-      {materiales.length === 0 ? (
-        <div className="mt-10 rounded-md border border-dashed border-linea bg-white p-10 text-center">
-          <p className="font-display font-semibold">
-            Aún no hay material con este filtro
-          </p>
-          <p className="mt-1 text-sm text-tinta-suave">
-            El material de cada módulo se publica en torno a su sesión. Prueba
-            con otro módulo u otro tipo.
-          </p>
+      <div className="mt-8 grid items-start gap-8 md:grid-cols-[264px_1fr]">
+        <RailModulos
+          modulos={modulos}
+          counts={counts}
+          total={materialesTodos.length}
+          moduloActivo={moduloActivo}
+          className="animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.12s_both]"
+        />
+
+        <div className="min-w-0 animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]">
+          {moduloCtx && (
+            <div className="relative mb-5 overflow-hidden rounded-2xl bg-tinta p-6 text-white md:px-7">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-[60px] -top-[90px] h-[280px] w-[280px] rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(0,108,175,0.4), transparent 70%)",
+                }}
+              />
+              <div className="relative">
+                <p className="eyebrow text-andritz-claro">
+                  Módulo {String(moduloCtx.numero).padStart(2, "0")} ·{" "}
+                  {ESTADO_LABEL[moduloCtx.estado]}
+                </p>
+                <h2 className="mt-2 font-display text-[26px] font-bold tracking-tight">
+                  {moduloCtx.titulo}
+                </h2>
+                <p className="mt-3.5 max-w-2xl border-l-[3px] border-andritz-claro pl-3.5 text-[15px] italic leading-snug text-white/[0.78]">
+                  {moduloCtx.preguntaGuia}
+                </p>
+              </div>
+            </div>
+          )}
+
+          <RepositorioResultados
+            materiales={materialesPanel}
+            numerosModulo={numerosModulo}
+            modulo={moduloCtx ? { numero: moduloCtx.numero } : undefined}
+          />
         </div>
-      ) : (
-        <ul className="mt-8 grid gap-4 md:grid-cols-2">
-          {materiales.map((mat) => {
-            const mod = modulos.find((m) => m.id === mat.moduloId);
-            return (
-              <li key={mat.id}>
-                <Link
-                  href={`/repositorio/${mat.slug}`}
-                  className="group flex h-full flex-col rounded-md border border-linea bg-white p-5 transition-colors hover:border-andritz"
-                >
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="andritz">
-                      {ETIQUETA_TIPO[mat.tipo]}
-                    </Badge>
-                    {mod && (
-                      <Badge variant="outline">
-                        Módulo {String(mod.numero).padStart(2, "0")}
-                      </Badge>
-                    )}
-                  </div>
-                  <h2 className="mt-3 font-display text-lg font-semibold leading-snug group-hover:text-andritz">
-                    {mat.titulo}
-                  </h2>
-                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-tinta-suave">
-                    {mat.resumen}
-                  </p>
-                  <span className="mt-4 flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-wide text-andritz">
-                    Abrir
-                    <ArrowRight
-                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      </div>
     </div>
   );
 }
 
-function FiltroLink({
-  href,
-  activo,
-  children,
-}: {
-  href: string;
-  activo: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      aria-current={activo ? "true" : undefined}
-      className={cn(
-        "rounded-sm border px-2.5 py-1 font-mono text-xs font-medium transition-colors",
-        activo
-          ? "border-andritz bg-andritz text-white"
-          : "border-linea bg-white text-tinta-suave hover:border-andritz hover:text-andritz"
-      )}
-    >
-      {children}
-    </Link>
-  );
-}
+const ESTADO_LABEL: Record<string, string> = {
+  realizada: "realizada",
+  proxima: "próxima",
+  programada: "programada",
+};
