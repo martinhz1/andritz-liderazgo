@@ -16,7 +16,7 @@ export default async function PlataformaLayout({
   if (!sesion) redirect("/login");
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col overflow-x-clip">
       <Nav nombre={sesion.n} rol={sesion.r} />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:px-6 md:py-10">
         {children}

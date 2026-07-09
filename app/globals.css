@@ -8,6 +8,9 @@
 @theme {
   --color-andritz: #006caf;
   --color-andritz-oscuro: #005a92;
+  /* Tinte claro del azul de marca para uso sobre fondo oscuro (hero).
+     No pertenece a la paleta de datos Adapsys. */
+  --color-andritz-claro: #5fb4e4;
   --color-tinta: #0c2a3e;
   --color-tinta-suave: #3d5568;
   --color-hueso: #f5f8fa;
@@ -78,6 +81,39 @@ body {
   animation: trazo-ruta 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Entrada escalonada de la pantalla de Inicio (fade + subida) */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Pulso del nodo "próxima" de la Ruta A→B. Variante oscura (hero) usa el
+   azul claro; la variante clara usa el azul Andritz. */
+@keyframes pulso-nodo {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(95, 180, 228, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(95, 180, 228, 0);
+  }
+}
+@keyframes pulso-nodo-claro {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 108, 175, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 108, 175, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ruta-trazo {
     animation: none;
@@ -86,6 +122,8 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

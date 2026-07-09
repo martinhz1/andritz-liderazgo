@@ -61,3 +61,14 @@ export async function getRegistros(): Promise<RegistroGrafico[]> {
 export async function getEncuesta(): Promise<Encuesta> {
   return ENCUESTA;
 }
+
+/**
+ * Párrafos de "La Gran Oportunidad" (Estado B) consolidada en el informe del
+ * Módulo 1. La usa el hero de Inicio; devolver desde datos evita fijar el
+ * texto en la UI si el informe cambia.
+ */
+export async function getGranOportunidad(): Promise<string[] | undefined> {
+  const informe = MATERIALES.find((m) => m.slug === "informe-sesion-modulo-1");
+  return informe?.secciones.find((s) => s.titulo?.startsWith("La Gran Oportunidad"))
+    ?.parrafos;
+}
