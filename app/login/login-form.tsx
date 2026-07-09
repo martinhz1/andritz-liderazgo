@@ -49,10 +49,11 @@ export function LoginForm() {
           name="usuario"
           type="text"
           autoComplete="username"
+          autoFocus
           required
           value={usuario}
           onChange={(e) => setUsuario(e.target.value)}
-          className="w-full rounded-md border border-linea bg-white px-3 py-2.5 text-sm text-tinta outline-none transition-colors focus:border-andritz"
+          className="w-full rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
         />
       </div>
       <div>
@@ -70,7 +71,7 @@ export function LoginForm() {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-md border border-linea bg-white px-3 py-2.5 text-sm text-tinta outline-none transition-colors focus:border-andritz"
+          className="w-full rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
         />
       </div>
 
@@ -86,7 +87,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={cargando}
-        className="flex w-full items-center justify-center gap-2 rounded-md bg-andritz px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-andritz-oscuro disabled:opacity-60"
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-andritz px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(0,108,175,0.8)] transition-colors hover:bg-andritz-oscuro disabled:opacity-60"
       >
         {cargando ? (
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
