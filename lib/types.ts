@@ -127,7 +127,8 @@ export type Rol = "participante" | "admin";
 
 export interface Usuario {
   usuario: string;
-  password: string;
+  /** Hash PBKDF2 (pbkdf2$iter$sal$hash) — nunca la contraseña en texto plano. */
+  hash: string;
   rol: Rol;
   nombre: string;
 }

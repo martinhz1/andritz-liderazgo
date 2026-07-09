@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { USERS } from "@/data/users";
 import { COOKIE_SESION, crearToken } from "@/lib/session";
+import { verifyPassword } from "@/lib/password";
 
 export async function POST(req: NextRequest) {
   let body: { usuario?: string; password?: string };
@@ -11,11 +12,10 @@ export async function POST(req: NextRequest) {
   }
 
   const { usuario, password } = body;
-  const user = USERS.find(
-    (u) => u.usuario === usuario?.trim().toLowerCase() && u.password === password
-  );
+  const user = USERS.find((u) => u.usuario === usuario?.trim().toLowerCase());
+  const valido = user ? await verifyPassword(password ?? "", user.hash) : false;
 
-  if (!user) {
+  if (!user || !valido) {
     return NextResponse.json(
       { ok: false, error: "Usuario o contraseña incorrectos" },
       { status: 401 }

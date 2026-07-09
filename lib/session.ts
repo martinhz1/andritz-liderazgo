@@ -7,8 +7,17 @@ export const COOKIE_SESION = "sesion_academia";
 const DURACION_MS = 1000 * 60 * 60 * 8; // 8 horas
 
 function getSecret(): string {
-  // TODO producción: definir SESSION_SECRET en Vercel y eliminar el fallback.
-  return process.env.SESSION_SECRET ?? "dev-secret-academia-andritz-adapsys";
+  const secreto = process.env.SESSION_SECRET;
+  if (secreto) return secreto;
+  // En producción NUNCA usar un fallback: una clave conocida permite forjar
+  // cookies de sesión (incluso de admin). Falla fuerte si no está definida.
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "SESSION_SECRET no está definida. Configúrala en el entorno (Vercel · Production y Preview)."
+    );
+  }
+  // Solo desarrollo local.
+  return "dev-secret-academia-andritz-adapsys";
 }
 
 function bytesToB64url(bytes: Uint8Array): string {
