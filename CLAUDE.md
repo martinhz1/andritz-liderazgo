@@ -6,7 +6,7 @@ basado en Liderazgo Adaptativo (Heifetz): módulos = trayecto del estado A
 (realidad) al estado B (aspiración / "La Gran Oportunidad").
 
 **No es e-learning.** Es repositorio de material + calendario + galería +
-panel de resultados. Los usuarios asisten a sesiones presenciales; la
+panel de resultados + foro. Los usuarios asisten a sesiones presenciales; la
 plataforma acompaña antes/durante/después.
 
 ## Stack
@@ -19,6 +19,12 @@ plataforma acompaña antes/durante/después.
 - Radix (tabs/dialog), lucide-react, Fontsource (Archivo, IBM Plex Sans/Mono)
 - Auth prototipo: cookie httpOnly firmada HMAC (Web Crypto, compatible Edge)
   en `lib/session.ts` + `middleware.ts`. Roles: `participante` | `admin`.
+  Contraseñas hasheadas (PBKDF2, `lib/password.ts`), nunca en texto plano.
+  `SESSION_SECRET` obligatorio en producción (sin fallback inseguro).
+- Foro = **única parte con datos dinámicos**: Neon Postgres + Drizzle ORM.
+  Esquema en `db/`, lectura en `lib/foro.ts`, mutaciones vía server actions en
+  `app/(plataforma)/foro/actions.ts`. Migrar esquema con `npm run db:push`.
+  Todo el resto del contenido sigue estático en `/data`.
 
 ## Convenciones NO negociables
 
@@ -35,8 +41,9 @@ plataforma acompaña antes/durante/después.
 4. **Tipografía por rol**: Archivo = display (títulos), IBM Plex Sans =
    cuerpo, IBM Plex Mono = datos/fechas/etiquetas/eyebrows. No introducir
    otras fuentes.
-5. **Capa de datos aislada.** La UI importa SOLO de `lib/content.ts`, nunca
-   de `/data` directo. Cualquier fuente nueva (Sheets/CMS) se implementa ahí.
+5. **Capa de datos aislada.** La UI importa SOLO de `lib/content.ts` (contenido
+   estático) o `lib/foro.ts` (foro, Postgres), nunca de `/data` ni de la DB
+   directo. Cualquier fuente nueva (Sheets/CMS) se implementa ahí.
 6. **Elemento signature = Ruta A→B** (`components/ruta-ab.tsx`). Codifica el
    estado real del programa (realizada/próxima/programada desde
    `data/sesiones.ts`). Mantener el resto de la UI disciplinada: sin barras
@@ -47,6 +54,11 @@ plataforma acompaña antes/durante/después.
    nuevos fuera de esos.
 7. **Accesibilidad**: foco visible (anillo azul Andritz), `prefers-reduced-motion`
    respetado (ver `globals.css`), textos alternativos, responsive real.
+8. **Foro.** Insignia «Coordinador/a del programa» = `rol === "admin"`. El
+   contenido de usuario se renderiza como texto plano (nunca
+   `dangerouslySetInnerHTML`; saltos con `whitespace-pre-wrap`). Toda mutación
+   valida sesión y permisos server-side. «Anuncio» y fijar: solo coordinadores;
+   editar: solo el autor; eliminar: autor o coordinador.
 
 ## Comandos
 
@@ -54,14 +66,17 @@ plataforma acompaña antes/durante/después.
 npm run dev      # desarrollo
 npm run build    # verificación obligatoria antes de commit
 npm run start    # producción local
+npm run db:push  # aplica el esquema del foro (db/schema.ts) a Neon
 ```
+
+DB del foro: `vercel env pull .env.local` trae `DATABASE_URL`. Dev y producción
+comparten la misma base Neon (sin branching).
 
 ## TODO pendientes
 
 - [ ] Confirmar el lugar real del Módulo 1 realizado (`data/sesiones.ts`, hoy
       "Oficinas Andritz, Santiago"; M2–M5 en SAN Room Management)
-- [ ] Migrar capa de datos a Google Sheets (reimplementar `lib/content.ts`;
-      patrón de referencia: lectura vía `gviz/tq` o API con service account)
-- [ ] `SESSION_SECRET` real en Vercel y eliminar fallback dev de
-      `lib/session.ts`
+- [ ] Migrar capa de datos estática a Google Sheets (reimplementar
+      `lib/content.ts`; el foro ya usa Postgres aparte)
 - [ ] Evaluar migrar auth mock a un proveedor real si la plataforma escala
+      (hoy: usuarios en `data/users.ts` con hash PBKDF2)
