@@ -35,6 +35,8 @@ export interface Material {
   tipo: TipoMaterial;
   titulo: string;
   resumen: string;
+  /** Fecha de publicación (ISO, p. ej. "2026-07-02"). Base de las notificaciones. */
+  publicadoEn: string;
   secciones: SeccionMaterial[];
 }
 

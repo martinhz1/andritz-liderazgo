@@ -4,6 +4,7 @@ import { ArrowLeft, Quote } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { MiniRuta } from "@/components/ruta-ab";
 import { getMaterial, getMateriales, getModulo, getModulos } from "@/lib/content";
+import { MarcarVista } from "@/components/notificaciones/marcar-vista";
 import type { TipoMaterial } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +37,7 @@ export default async function MaterialPage({
 
   return (
     <article className={cn(esLectura ? "mx-auto max-w-3xl" : "max-w-4xl")}>
+      <MarcarVista fuente="repositorio" />
       <Link
         href="/repositorio"
         className="inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-wide text-tinta-suave transition-colors hover:text-andritz"

@@ -16,7 +16,8 @@ export const SESIONES: Sesion[] = [
       fin: "20260701T130000",
     },
     horario: "09:00 – 13:00",
-    lugar: "Oficinas Andritz, Santiago",
+    lugar: "Hotel NH",
+    direccion: "Vitacura 2610, Santiago",
     estado: "realizada",
   },
   {

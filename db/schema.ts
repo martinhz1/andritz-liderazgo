@@ -70,3 +70,11 @@ export const reaccionesRespuesta = pgTable(
   },
   (t) => [unique("reacciones_respuesta_uniq").on(t.respuestaId, t.autorUsuario)]
 );
+
+// Última vez que cada usuario abrió cada sección; base para las notificaciones
+// (lo publicado después de estas marcas cuenta como "no leído").
+export const vistasSeccion = pgTable("vistas_seccion", {
+  usuario: text("usuario").primaryKey(),
+  foroVistoEn: timestamp("foro_visto_en", { withTimezone: true }),
+  repoVistoEn: timestamp("repo_visto_en", { withTimezone: true }),
+});

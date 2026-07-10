@@ -5,6 +5,7 @@ import { COOKIE_SESION, verificarToken } from "@/lib/session";
 import { getPosts } from "@/lib/foro";
 import { CompositorPost } from "@/components/foro/compositor-post";
 import { TarjetaPost } from "@/components/foro/tarjeta-post";
+import { MarcarVista } from "@/components/notificaciones/marcar-vista";
 
 export const metadata = { title: "Foro · Academia de Liderazgo Andritz" };
 
@@ -18,6 +19,7 @@ export default async function ForoPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
+      <MarcarVista fuente="foro" />
       <div className="flex flex-wrap items-end justify-between gap-4 animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.04s_both]">
         <div>
           <p className="eyebrow text-andritz">Foro</p>

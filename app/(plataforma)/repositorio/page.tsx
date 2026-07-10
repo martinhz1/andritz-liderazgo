@@ -1,6 +1,7 @@
 import { getMateriales, getModulosConEstado } from "@/lib/content";
 import { RailModulos } from "@/components/repositorio/rail-modulos";
 import { RepositorioResultados } from "@/components/repositorio/resultados";
+import { MarcarVista } from "@/components/notificaciones/marcar-vista";
 
 export const metadata = { title: "Repositorio · Academia de Liderazgo Andritz" };
 
@@ -31,6 +32,7 @@ export default async function RepositorioPage({
 
   return (
     <div>
+      <MarcarVista fuente="repositorio" />
       <div className="animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.04s_both]">
         <p className="eyebrow text-andritz">Repositorio</p>
         <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">

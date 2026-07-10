@@ -7,6 +7,7 @@ export const MATERIALES: Material[] = [
   {
     id: "mat-m1-definiciones",
     slug: "proposito-modulo-1",
+    publicadoEn: "2026-06-28",
     moduloId: "m1",
     tipo: "definiciones",
     titulo: "Propósito del Módulo 1: Liderar el Negocio",
@@ -63,6 +64,7 @@ export const MATERIALES: Material[] = [
   {
     id: "mat-m1-lecturas",
     slug: "liderazgo-adaptativo",
+    publicadoEn: "2026-06-28",
     moduloId: "m1",
     tipo: "lecturas",
     titulo: "Liderazgo Adaptativo",
@@ -138,6 +140,7 @@ export const MATERIALES: Material[] = [
   {
     id: "mat-m1-informe",
     slug: "informe-sesion-modulo-1",
+    publicadoEn: "2026-07-02",
     moduloId: "m1",
     tipo: "informe",
     titulo: "Informe de sesión — Módulo 1",
@@ -207,6 +210,7 @@ export const MATERIALES: Material[] = [
   {
     id: "mat-m2-tareas",
     slug: "conversacion-con-el-equipo",
+    publicadoEn: "2026-07-03",
     moduloId: "m2",
     tipo: "tareas",
     titulo: "Tarea: Conversación con el Equipo",

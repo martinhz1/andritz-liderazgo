@@ -74,8 +74,6 @@ comparten la misma base Neon (sin branching).
 
 ## TODO pendientes
 
-- [ ] Confirmar el lugar real del Módulo 1 realizado (`data/sesiones.ts`, hoy
-      "Oficinas Andritz, Santiago"; M2–M5 en SAN Room Management)
 - [ ] Migrar capa de datos estática a Google Sheets (reimplementar
       `lib/content.ts`; el foro ya usa Postgres aparte)
 - [ ] Evaluar migrar auth mock a un proveedor real si la plataforma escala

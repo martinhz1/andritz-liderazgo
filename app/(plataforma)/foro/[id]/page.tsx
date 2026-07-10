@@ -10,6 +10,7 @@ import { AccionesPost } from "@/components/foro/acciones-post";
 import { BotonReaccion } from "@/components/foro/boton-reaccion";
 import { CompositorRespuesta } from "@/components/foro/compositor-respuesta";
 import { RespuestaItem } from "@/components/foro/respuesta-item";
+import { MarcarVista } from "@/components/notificaciones/marcar-vista";
 
 export const metadata = { title: "Publicación · Foro · Academia de Liderazgo Andritz" };
 
@@ -32,6 +33,7 @@ export default async function PostPage({
 
   return (
     <div className="mx-auto max-w-3xl">
+      <MarcarVista fuente="foro" />
       <Link
         href="/foro"
         className="inline-flex items-center gap-1.5 font-mono text-xs text-tinta-suave transition-colors hover:text-andritz"

@@ -5,7 +5,9 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { cn, iniciales } from "@/lib/utils";
+import { Campana } from "@/components/notificaciones/campana";
 import type { Rol } from "@/lib/types";
+import type { Notificaciones } from "@/lib/notificaciones";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
@@ -15,7 +17,15 @@ const LINKS = [
   { href: "/registros", label: "Registros gráficos" },
 ];
 
-export function Nav({ nombre, rol }: { nombre: string; rol: Rol }) {
+export function Nav({
+  nombre,
+  rol,
+  notificaciones,
+}: {
+  nombre: string;
+  rol: Rol;
+  notificaciones: Notificaciones;
+}) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -92,6 +102,7 @@ export function Nav({ nombre, rol }: { nombre: string; rol: Rol }) {
 
         {/* Usuario */}
         <div className="order-2 ml-auto flex flex-none items-center gap-2.5 lg:order-3 lg:ml-0">
+          <Campana notificaciones={notificaciones} />
           <div className="flex items-center gap-2.5 rounded-full border border-[#e4ebf0] bg-hueso p-1 pr-1.5">
             <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[linear-gradient(140deg,#006caf,#0c2a3e)] font-display text-xs font-bold tracking-wide text-white">
               {iniciales(nombre)}
