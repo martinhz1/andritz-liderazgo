@@ -4,24 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, iniciales } from "@/lib/utils";
 import type { Rol } from "@/lib/types";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
   { href: "/repositorio", label: "Repositorio" },
   { href: "/calendario", label: "Calendario" },
+  { href: "/foro", label: "Foro" },
   { href: "/registros", label: "Registros gráficos" },
 ];
-
-function iniciales(nombre: string) {
-  return nombre
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((p) => p[0]?.toUpperCase() ?? "")
-    .join("");
-}
 
 export function Nav({ nombre, rol }: { nombre: string; rol: Rol }) {
   const pathname = usePathname();

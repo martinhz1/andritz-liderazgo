@@ -6,6 +6,7 @@ import { MATERIALES } from "@/data/materiales";
 import { SESIONES } from "@/data/sesiones";
 import { REGISTROS } from "@/data/registros";
 import { ENCUESTA } from "@/data/encuesta";
+import { USERS } from "@/data/users";
 import type {
   Encuesta,
   EstadoSesion,
@@ -85,6 +86,24 @@ export async function getRegistros(): Promise<RegistroGrafico[]> {
 
 export async function getEncuesta(): Promise<Encuesta> {
   return ENCUESTA;
+}
+
+export interface UsuarioPublico {
+  usuario: string;
+  nombre: string;
+  /** true si es coordinador/a del programa (rol admin). */
+  esCoordinador: boolean;
+}
+
+/**
+ * Datos públicos de un usuario para mostrar como autor en el foro (nombre e
+ * insignia de coordinador). Nunca expone el hash. Lookup sincrónico sobre la
+ * lista estática de usuarios.
+ */
+export function getUsuarioPublico(usuario: string): UsuarioPublico | undefined {
+  const u = USERS.find((x) => x.usuario === usuario);
+  if (!u) return undefined;
+  return { usuario: u.usuario, nombre: u.nombre, esCoordinador: u.rol === "admin" };
 }
 
 /**
