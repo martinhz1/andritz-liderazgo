@@ -106,6 +106,17 @@ export function getUsuarioPublico(usuario: string): UsuarioPublico | undefined {
   return { usuario: u.usuario, nombre: u.nombre, esCoordinador: u.rol === "admin" };
 }
 
+/** Usuarios reales (excluye las cuentas demo). Base para métricas de adopción. */
+export function getUsuariosReales(): UsuarioPublico[] {
+  return USERS.filter(
+    (u) => u.usuario !== "participante" && u.usuario !== "admin"
+  ).map((u) => ({
+    usuario: u.usuario,
+    nombre: u.nombre,
+    esCoordinador: u.rol === "admin",
+  }));
+}
+
 /**
  * Párrafos de "La Gran Oportunidad" (Estado B) consolidada en el informe del
  * Módulo 1. La usa el hero de Inicio; devolver desde datos evita fijar el

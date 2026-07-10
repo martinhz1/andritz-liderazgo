@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { cn, iniciales } from "@/lib/utils";
 import { Campana } from "@/components/notificaciones/campana";
+import { MenuAdmin } from "@/components/menu-admin";
 import type { Rol } from "@/lib/types";
 import type { Notificaciones } from "@/lib/notificaciones";
 
@@ -14,7 +15,7 @@ const LINKS = [
   { href: "/repositorio", label: "Repositorio" },
   { href: "/calendario", label: "Calendario" },
   { href: "/foro", label: "Foro" },
-  { href: "/registros", label: "Registros gráficos" },
+  { href: "/registros", label: "Registros" },
 ];
 
 export function Nav({
@@ -28,11 +29,7 @@ export function Nav({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-
-  const links =
-    rol === "admin"
-      ? [...LINKS, { href: "/resultados", label: "Diagnóstico" }]
-      : LINKS;
+  const links = LINKS;
 
   async function cerrarSesion() {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -102,6 +99,7 @@ export function Nav({
 
         {/* Usuario */}
         <div className="order-2 ml-auto flex flex-none items-center gap-2.5 lg:order-3 lg:ml-0">
+          {rol === "admin" && <MenuAdmin pathname={pathname} />}
           <Campana notificaciones={notificaciones} />
           <div className="flex items-center gap-2.5 rounded-full border border-[#e4ebf0] bg-hueso p-1 pr-1.5">
             <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[linear-gradient(140deg,#006caf,#0c2a3e)] font-display text-xs font-bold tracking-wide text-white">

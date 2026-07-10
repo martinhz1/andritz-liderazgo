@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { USERS } from "@/data/users";
 import { COOKIE_SESION, crearToken } from "@/lib/session";
 import { verifyPassword } from "@/lib/password";
+import { registrarEvento } from "@/lib/metricas";
 
 export async function POST(req: NextRequest) {
   let body: { usuario?: string; password?: string };
@@ -30,6 +31,8 @@ export async function POST(req: NextRequest) {
       { status: 401 }
     );
   }
+
+  await registrarEvento(user.usuario, "login");
 
   const token = await crearToken(user.usuario, user.nombre, user.rol);
   const res = NextResponse.json({ ok: true, rol: user.rol });

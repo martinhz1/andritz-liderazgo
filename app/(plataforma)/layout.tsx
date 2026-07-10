@@ -4,6 +4,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { COOKIE_SESION, verificarToken } from "@/lib/session";
 import { getNotificaciones } from "@/lib/notificaciones";
+import { RegistrarActividad } from "@/components/actividad/registrar-actividad";
 
 export default async function PlataformaLayout({
   children,
@@ -20,6 +21,7 @@ export default async function PlataformaLayout({
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-clip">
+      <RegistrarActividad />
       <Nav nombre={sesion.n} rol={sesion.r} notificaciones={notificaciones} />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:px-6 md:py-10">
         {children}

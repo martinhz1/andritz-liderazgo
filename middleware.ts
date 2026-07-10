@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { COOKIE_SESION, verificarToken } from "@/lib/session";
 
 // Protege toda la plataforma: sin sesión válida → /login.
-// /resultados exige rol admin (además de que la nav la oculta).
+// /resultados y /adopcion exigen rol admin (además de que la nav los oculta).
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get(COOKIE_SESION)?.value;
@@ -20,7 +20,9 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (pathname.startsWith("/resultados") && sesion.r !== "admin") {
+  const soloAdmin =
+    pathname.startsWith("/resultados") || pathname.startsWith("/adopcion");
+  if (soloAdmin && sesion.r !== "admin") {
     return NextResponse.redirect(new URL("/", req.url));
   }
 

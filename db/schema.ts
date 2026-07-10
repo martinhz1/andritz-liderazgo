@@ -78,3 +78,20 @@ export const vistasSeccion = pgTable("vistas_seccion", {
   foroVistoEn: timestamp("foro_visto_en", { withTimezone: true }),
   repoVistoEn: timestamp("repo_visto_en", { withTimezone: true }),
 });
+
+// Eventos de uso para el dashboard de adopción (solo admins). tipo: "login"
+// (inicio de sesión) o "vista" (visita a una ruta; `ruta` guarda el pathname).
+export const eventos = pgTable(
+  "eventos",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    usuario: text("usuario").notNull(),
+    tipo: text("tipo", { enum: ["login", "vista"] }).notNull(),
+    ruta: text("ruta"),
+    creadoEn: timestamp("creado_en", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("eventos_creado_idx").on(t.creadoEn),
+    index("eventos_usuario_idx").on(t.usuario),
+  ]
+);
