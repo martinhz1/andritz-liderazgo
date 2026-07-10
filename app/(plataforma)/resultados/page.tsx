@@ -9,7 +9,7 @@ import { bandaDe, favorabilidadDimension } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: "Resultados de encuesta · Academia de Liderazgo Andritz",
+  title: "Diagnóstico · Academia de Liderazgo Andritz",
 };
 
 const surgir = (delay: string) =>
@@ -45,7 +45,7 @@ export default async function ResultadosPage() {
       {/* ── Encabezado ── */}
       <div className={surgir("0.04s")}>
         <div className="flex flex-wrap items-center gap-3">
-          <p className="eyebrow text-andritz">Resultados de encuesta</p>
+          <p className="eyebrow text-andritz">Diagnóstico</p>
           {encuesta.esEjemplo && (
             <Badge variant="alerta">
               <AlertTriangle className="h-3 w-3" aria-hidden />

@@ -30,7 +30,7 @@ Credenciales demo (definidas en `data/users.ts`):
 | Usuario        | Contraseña     | Rol          | Ve                          |
 | -------------- | -------------- | ------------ | --------------------------- |
 | `participante` | `academia2026` | participante | Todo menos Resultados       |
-| `admin`        | `adapsys2026`  | admin        | Todo + Resultados de encuesta |
+| `admin`        | `adapsys2026`  | admin        | Todo + Diagnóstico            |
 
 ## Estructura
 

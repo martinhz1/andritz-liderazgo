@@ -21,7 +21,7 @@ export function Nav({ nombre, rol }: { nombre: string; rol: Rol }) {
 
   const links =
     rol === "admin"
-      ? [...LINKS, { href: "/resultados", label: "Resultados de encuesta" }]
+      ? [...LINKS, { href: "/resultados", label: "Diagnóstico" }]
       : LINKS;
 
   async function cerrarSesion() {
@@ -64,9 +64,9 @@ export function Nav({ nombre, rol }: { nombre: string; rol: Rol }) {
         {/* Navegación (segmented control) */}
         <nav
           aria-label="Navegación principal"
-          className="order-3 w-full lg:order-2 lg:w-auto lg:flex-1 lg:flex lg:justify-center"
+          className="order-3 w-full lg:order-2 lg:w-auto lg:min-w-0 lg:flex-1 lg:flex lg:justify-center"
         >
-          <ul className="flex gap-0.5 overflow-x-auto rounded-[13px] border border-[#e1e9ef] bg-[#eef3f7] p-1.5">
+          <ul className="flex min-w-0 gap-0.5 overflow-x-auto rounded-[13px] border border-[#e1e9ef] bg-[#eef3f7] p-1.5">
             {links.map((l) => {
               const activo =
                 l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
