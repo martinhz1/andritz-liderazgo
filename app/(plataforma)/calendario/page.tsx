@@ -41,16 +41,16 @@ export default async function CalendarioPage() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-6 animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.04s_both]">
         <div>
-          <p className="eyebrow text-andritz">Calendario</p>
+          <p className="eyebrow text-acento">Calendario</p>
           <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">
             Ruta de sesiones
           </h1>
-          <p className="mt-3 max-w-xl text-tinta-suave">
+          <p className="mt-3 max-w-xl text-ink-suave">
             Las cinco sesiones del programa en orden cronológico: fecha, horario,
             lugar y la pregunta que guía cada módulo.
           </p>
         </div>
-        <p className="whitespace-nowrap font-mono text-xs text-tinta-suave">
+        <p className="whitespace-nowrap font-mono text-xs text-ink-suave">
           {resumen}
         </p>
       </div>

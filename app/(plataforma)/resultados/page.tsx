@@ -16,13 +16,13 @@ const surgir = (delay: string) =>
   `animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_${delay}_both]`;
 
 const ESTILO_BANDA: Record<string, string> = {
-  Baja: "bg-banda-baja text-magenta-ad",
-  Media: "bg-banda-media text-teal-ad",
-  Alta: "bg-banda-alta text-teal-ad",
+  Baja: "bg-banda-baja text-magenta-ad dark:text-[#f2789f]",
+  Media: "bg-banda-media text-teal-ad dark:text-[#5fc7cf]",
+  Alta: "bg-banda-alta text-teal-ad dark:text-[#5fc7cf]",
 };
 
 const CARD =
-  "rounded-2xl border border-linea bg-white p-6 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]";
+  "rounded-2xl border border-borde bg-superficie-alta p-6 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]";
 
 export default async function ResultadosPage() {
   const encuesta = await getEncuesta();
@@ -45,7 +45,7 @@ export default async function ResultadosPage() {
       {/* ── Encabezado ── */}
       <div className={surgir("0.04s")}>
         <div className="flex flex-wrap items-center gap-3">
-          <p className="eyebrow text-andritz">Diagnóstico</p>
+          <p className="eyebrow text-acento">Diagnóstico</p>
           {encuesta.esEjemplo && (
             <Badge variant="alerta">
               <AlertTriangle className="h-3 w-3" aria-hidden />
@@ -56,7 +56,7 @@ export default async function ResultadosPage() {
         <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">
           {encuesta.titulo}
         </h1>
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-tinta-suave">
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-ink-suave">
           <span>{encuesta.etapa}</span>
           <span aria-hidden>·</span>
           <span>N={encuesta.n}</span>
@@ -70,9 +70,9 @@ export default async function ResultadosPage() {
       {/* ── KPI row ── */}
       <div className={`mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${surgir("0.1s")}`}>
         <div className={CARD}>
-          <p className="eyebrow text-tinta-suave">Favorabilidad general</p>
+          <p className="eyebrow text-ink-suave">Favorabilidad general</p>
           <div className="mt-2 flex items-end gap-2.5">
-            <span className="font-display text-5xl font-extrabold leading-none text-tinta">
+            <span className="font-display text-5xl font-extrabold leading-none text-ink">
               {general}
               <span className="text-2xl">%</span>
             </span>
@@ -87,14 +87,14 @@ export default async function ResultadosPage() {
         <TileDimension titulo="Dimensión más baja" dim={masBaja} />
 
         <div className={CARD}>
-          <p className="eyebrow text-tinta-suave">Base</p>
+          <p className="eyebrow text-ink-suave">Base</p>
           <div className="mt-2 flex items-end gap-2">
-            <span className="font-display text-3xl font-bold leading-none text-tinta">
+            <span className="font-display text-3xl font-bold leading-none text-ink">
               {encuesta.n}
             </span>
-            <span className="mb-0.5 text-sm text-tinta-suave">respondentes</span>
+            <span className="mb-0.5 text-sm text-ink-suave">respondentes</span>
           </div>
-          <div className="mt-4 space-y-1 font-mono text-xs text-tinta-suave">
+          <div className="mt-4 space-y-1 font-mono text-xs text-ink-suave">
             <p>{preguntas.length} afirmaciones · {encuesta.dimensiones.length} dimensiones</p>
             <p>Escala {encuesta.escala}</p>
           </div>
@@ -103,7 +103,7 @@ export default async function ResultadosPage() {
 
       {/* Bandas de percepción */}
       <div className="mt-5 flex flex-wrap items-center gap-2">
-        <span className="font-mono text-xs uppercase tracking-wide text-tinta-suave">
+        <span className="font-mono text-xs uppercase tracking-wide text-ink-suave">
           Bandas de percepción
         </span>
         <BandaChip banda="Baja">Baja 0–60%</BandaChip>
@@ -116,7 +116,7 @@ export default async function ResultadosPage() {
         <h2 id="dim-titulo" className="font-display text-xl font-bold tracking-tight">
           Favorabilidad por dimensión
         </h2>
-        <p className="mt-1 text-sm text-tinta-suave">
+        <p className="mt-1 text-sm text-ink-suave">
           Porcentaje de respuestas favorables (4–5) por dimensión, contra los
           umbrales de banda (60% y 80%).
         </p>
@@ -129,10 +129,10 @@ export default async function ResultadosPage() {
           {dimensiones.map((d) => (
             <li
               key={d.id}
-              className="flex items-center justify-between gap-3 rounded-lg border border-linea/70 px-3 py-2"
+              className="flex items-center justify-between gap-3 rounded-lg border border-borde/70 px-3 py-2"
             >
-              <span className="text-sm text-tinta">
-                <span className="font-mono text-xs font-medium text-tinta-suave">
+              <span className="text-sm text-ink">
+                <span className="font-mono text-xs font-medium text-ink-suave">
                   {d.id}
                 </span>{" "}
                 · {d.nombre}
@@ -153,7 +153,7 @@ export default async function ResultadosPage() {
         <h2 id="preg-titulo" className="font-display text-xl font-bold tracking-tight">
           Favorabilidad por pregunta
         </h2>
-        <p className="mt-1 text-sm text-tinta-suave">
+        <p className="mt-1 text-sm text-ink-suave">
           Distribución de respuestas favorable · neutral · desfavorable de cada
           afirmación.
         </p>
@@ -177,8 +177,8 @@ export default async function ResultadosPage() {
                 {d.preguntas.map((p) => (
                   <li key={p.numero}>
                     <div className="flex items-start justify-between gap-4">
-                      <p className="text-sm leading-relaxed text-tinta">
-                        <span className="font-mono text-xs font-medium text-tinta-suave">
+                      <p className="text-sm leading-relaxed text-ink">
+                        <span className="font-mono text-xs font-medium text-ink-suave">
                           {p.numero}.
                         </span>{" "}
                         {p.texto}
@@ -197,7 +197,7 @@ export default async function ResultadosPage() {
                         desfavorable={p.desfavorable}
                       />
                     </div>
-                    <p className="mt-1.5 font-mono text-[11px] text-tinta-suave">
+                    <p className="mt-1.5 font-mono text-[11px] text-ink-suave">
                       Favorable {p.favorable}% · Neutral {p.neutral}% · Desfavorable{" "}
                       {p.desfavorable}%
                       {p.nsnr
@@ -214,14 +214,14 @@ export default async function ResultadosPage() {
         </Tabs>
 
         {/* Leyenda */}
-        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-linea pt-4 font-mono text-xs text-tinta-suave">
+        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-borde pt-4 font-mono text-xs text-ink-suave">
           <LeyendaItem color="#00B8B8" etiqueta="Favorable (4–5)" />
           <LeyendaItem color="#B9C9D3" etiqueta="Neutral (3)" />
           <LeyendaItem color="#C20C5B" etiqueta="Desfavorable (1–2)" />
         </div>
       </section>
 
-      <p className="mt-6 max-w-3xl font-mono text-xs leading-relaxed text-tinta-suave">
+      <p className="mt-6 max-w-3xl font-mono text-xs leading-relaxed text-ink-suave">
         Nota: la favorabilidad de cada dimensión corresponde al promedio simple de
         la favorabilidad de sus preguntas; algunas cifras pueden diferir en ±1
         punto por redondeo. Los casos No Sabe/No Responde se excluyen de la base de
@@ -240,13 +240,13 @@ function TileDimension({
 }) {
   return (
     <div className={CARD}>
-      <p className="eyebrow text-tinta-suave">{titulo}</p>
-      <p className="mt-2 font-mono text-xs text-tinta-suave">{dim.id}</p>
-      <p className="mt-0.5 font-display text-[15px] font-semibold leading-tight text-tinta">
+      <p className="eyebrow text-ink-suave">{titulo}</p>
+      <p className="mt-2 font-mono text-xs text-ink-suave">{dim.id}</p>
+      <p className="mt-0.5 font-display text-[15px] font-semibold leading-tight text-ink">
         {dim.nombre}
       </p>
       <div className="mt-3 flex items-center gap-2">
-        <span className="font-display text-2xl font-bold text-tinta">
+        <span className="font-display text-2xl font-bold text-ink">
           {dim.favorabilidad}%
         </span>
         <BandaChip banda={bandaDe(dim.favorabilidad)} />

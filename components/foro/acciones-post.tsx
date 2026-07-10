@@ -7,7 +7,7 @@ import { eliminarPost, fijarPost } from "@/app/(plataforma)/foro/actions";
 import { CompositorPost } from "./compositor-post";
 
 const BTN =
-  "rounded-md p-1.5 text-tinta-suave transition-colors hover:bg-hueso hover:text-tinta disabled:opacity-50";
+  "rounded-md p-1.5 text-ink-suave transition-colors hover:bg-superficie-suave hover:text-ink disabled:opacity-50";
 
 export function AccionesPost({
   post,

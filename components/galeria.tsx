@@ -23,11 +23,11 @@ export function Galeria({ titulo, fotos }: { titulo: string; fotos: Foto[] }) {
           <li key={i}>
             <button
               onClick={() => setAbierta(i)}
-              className="group block w-full overflow-hidden rounded-md border border-linea bg-white text-left transition-colors hover:border-andritz"
+              className="group block w-full overflow-hidden rounded-md border border-borde bg-superficie-alta text-left transition-colors hover:border-andritz"
               aria-label={`Ver foto: ${foto.alt}`}
             >
               <Miniatura foto={foto} indice={i} />
-              <p className="truncate px-2.5 py-2 font-mono text-[11px] text-tinta-suave">
+              <p className="truncate px-2.5 py-2 font-mono text-[11px] text-ink-suave">
                 {foto.alt}
               </p>
             </button>
@@ -42,7 +42,7 @@ export function Galeria({ titulo, fotos }: { titulo: string; fotos: Foto[] }) {
               <DialogTitle className="sr-only">
                 {titulo} — {fotos[abierta].alt}
               </DialogTitle>
-              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-sm bg-hueso">
+              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-sm bg-superficie-suave">
                 {fotos[abierta].src ? (
                   <Image
                     src={fotos[abierta].src!}
@@ -56,22 +56,22 @@ export function Galeria({ titulo, fotos }: { titulo: string; fotos: Foto[] }) {
                 )}
               </div>
               <figcaption className="mt-3 flex items-center justify-between gap-4">
-                <p className="text-sm text-tinta-suave">{fotos[abierta].alt}</p>
+                <p className="text-sm text-ink-suave">{fotos[abierta].alt}</p>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs text-tinta-suave">
+                  <span className="font-mono text-xs text-ink-suave">
                     {abierta + 1} / {fotos.length}
                   </span>
                   <button
                     onClick={anterior}
                     aria-label="Foto anterior"
-                    className="rounded-sm border border-linea p-1.5 text-tinta-suave hover:border-andritz hover:text-andritz"
+                    className="rounded-sm border border-borde p-1.5 text-ink-suave hover:border-andritz hover:text-acento"
                   >
                     <ChevronLeft className="h-4 w-4" aria-hidden />
                   </button>
                   <button
                     onClick={siguiente}
                     aria-label="Foto siguiente"
-                    className="rounded-sm border border-linea p-1.5 text-tinta-suave hover:border-andritz hover:text-andritz"
+                    className="rounded-sm border border-borde p-1.5 text-ink-suave hover:border-andritz hover:text-acento"
                   >
                     <ChevronRight className="h-4 w-4" aria-hidden />
                   </button>
@@ -100,9 +100,9 @@ function Miniatura({ foto, indice }: { foto: Foto; indice: number }) {
     );
   }
   return (
-    <div className="flex aspect-[4/3] flex-col items-center justify-center gap-1.5 bg-hueso">
-      <Camera className="h-5 w-5 text-linea" aria-hidden />
-      <span className="font-mono text-[10px] uppercase tracking-wide text-tinta-suave/60">
+    <div className="flex aspect-[4/3] flex-col items-center justify-center gap-1.5 bg-superficie-suave">
+      <Camera className="h-5 w-5 text-borde" aria-hidden />
+      <span className="font-mono text-[10px] uppercase tracking-wide text-ink-suave/60">
         Foto {String(indice + 1).padStart(2, "0")} · pendiente
       </span>
     </div>
@@ -112,11 +112,11 @@ function Miniatura({ foto, indice }: { foto: Foto; indice: number }) {
 function PlaceholderGrande({ alt, indice }: { alt: string; indice: number }) {
   return (
     <div className="flex flex-col items-center gap-3 p-8 text-center">
-      <Camera className="h-10 w-10 text-linea" aria-hidden />
-      <p className="font-mono text-xs uppercase tracking-wide text-tinta-suave">
+      <Camera className="h-10 w-10 text-borde" aria-hidden />
+      <p className="font-mono text-xs uppercase tracking-wide text-ink-suave">
         Foto {String(indice + 1).padStart(2, "0")} pendiente de subir
       </p>
-      <p className="max-w-sm text-sm text-tinta-suave">{alt}</p>
+      <p className="max-w-sm text-sm text-ink-suave">{alt}</p>
     </div>
   );
 }

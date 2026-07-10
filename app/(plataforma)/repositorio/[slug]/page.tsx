@@ -40,13 +40,13 @@ export default async function MaterialPage({
       <MarcarVista fuente="repositorio" />
       <Link
         href="/repositorio"
-        className="inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-wide text-tinta-suave transition-colors hover:text-andritz"
+        className="inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-wide text-ink-suave transition-colors hover:text-acento"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
         Repositorio
       </Link>
 
-      <header className="mt-6 border-b border-linea pb-6">
+      <header className="mt-6 border-b border-borde pb-6">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="andritz">{ETIQUETA_TIPO[material.tipo]}</Badge>
           {modulo && (
@@ -58,7 +58,7 @@ export default async function MaterialPage({
         <h1 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">
           {material.titulo}
         </h1>
-        <p className="mt-3 max-w-2xl text-tinta-suave">{material.resumen}</p>
+        <p className="mt-3 max-w-2xl text-ink-suave">{material.resumen}</p>
         {modulo && (
           <div className="mt-5">
             <MiniRuta modulos={modulos} moduloActualId={modulo.id} />
@@ -76,7 +76,7 @@ export default async function MaterialPage({
             )}
 
             {sec.parrafos?.map((p, j) => (
-              <p key={j} className="mb-4 leading-relaxed text-tinta">
+              <p key={j} className="mb-4 leading-relaxed text-ink">
                 {p}
               </p>
             ))}
@@ -84,7 +84,7 @@ export default async function MaterialPage({
             {sec.lista && (
               <ul className="mt-2 space-y-2.5">
                 {sec.lista.map((item, j) => (
-                  <li key={j} className="flex gap-3 text-tinta">
+                  <li key={j} className="flex gap-3 text-ink">
                     <span
                       className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-andritz"
                       aria-hidden
@@ -108,10 +108,10 @@ export default async function MaterialPage({
                 {sec.citas.map((cita, j) => (
                   <li
                     key={j}
-                    className="rounded-md border border-linea bg-white p-4"
+                    className="rounded-md border border-borde bg-superficie-alta p-4"
                   >
-                    <Quote className="h-4 w-4 text-andritz" aria-hidden />
-                    <p className="mt-2 text-sm italic leading-relaxed text-tinta">
+                    <Quote className="h-4 w-4 text-acento" aria-hidden />
+                    <p className="mt-2 text-sm italic leading-relaxed text-ink">
                       “{cita}”
                     </p>
                   </li>
@@ -124,16 +124,16 @@ export default async function MaterialPage({
                 {sec.columnas.map((col, j) => (
                   <div
                     key={j}
-                    className="rounded-md border border-linea bg-white p-4"
+                    className="rounded-md border border-borde bg-superficie-alta p-4"
                   >
-                    <h3 className="font-mono text-xs font-medium uppercase leading-relaxed tracking-[0.08em] text-andritz">
+                    <h3 className="font-mono text-xs font-medium uppercase leading-relaxed tracking-[0.08em] text-acento">
                       {col.titulo}
                     </h3>
                     <ul className="mt-3 space-y-1.5">
                       {col.items.map((item, k) => (
                         <li
                           key={k}
-                          className="border-b border-linea/60 pb-1.5 text-sm leading-snug text-tinta last:border-0"
+                          className="border-b border-borde/60 pb-1.5 text-sm leading-snug text-ink last:border-0"
                         >
                           {item}
                         </li>

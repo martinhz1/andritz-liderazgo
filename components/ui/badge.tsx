@@ -4,9 +4,9 @@ type Variant = "andritz" | "neutro" | "alerta" | "outline";
 
 const estilos: Record<Variant, string> = {
   andritz: "bg-andritz text-white",
-  neutro: "bg-linea/60 text-tinta-suave",
+  neutro: "bg-borde/60 text-ink-suave",
   alerta: "bg-magenta-ad/10 text-magenta-ad border border-magenta-ad/30",
-  outline: "border border-linea text-tinta-suave bg-white",
+  outline: "border border-borde text-ink-suave bg-superficie-alta",
 };
 
 export function Badge({

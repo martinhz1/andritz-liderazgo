@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { LoginForm } from "./login-form";
+import { TemaToggle } from "@/components/tema/tema-toggle";
 
 export const metadata = {
   title: "Ingresar · Academia de Liderazgo Andritz",
@@ -10,9 +11,12 @@ const surgir = (delay: string) =>
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="relative flex min-h-screen flex-col">
       {/* Franja de acento — hilo de marca con el header de la plataforma */}
       <div className="h-[3px] bg-[linear-gradient(90deg,#0c2a3e_0%,#006caf_48%,#5fb4e4_100%)]" />
+
+      {/* Toggle de tema (sobre el panel de acceso, visible antes de entrar) */}
+      <TemaToggle className="absolute right-4 top-6 z-20 sm:right-6" />
 
       <div className="grid flex-1 lg:grid-cols-[1.05fr_0.95fr]">
         {/* ── Panel de marca (oscuro) ── */}
@@ -26,7 +30,8 @@ export default function LoginPage() {
             }}
           />
 
-          {/* Marca */}
+          {/* Marca — el tile es blanco en ambos temas (va sobre el panel
+              oscuro y el logo Andritz es azul oscuro) */}
           <div className={surgir("0.05s")}>
             <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3.5 shadow-[0_12px_32px_-14px_rgba(0,0,0,0.55)]">
               <Image
@@ -78,7 +83,7 @@ export default function LoginPage() {
         </aside>
 
         {/* ── Panel de acceso (claro) ── */}
-        <div className="flex flex-col bg-white">
+        <div className="flex flex-col bg-superficie-alta">
           <div className="flex flex-1 items-center justify-center px-6 py-12 sm:px-12">
             <div className={`w-full max-w-sm ${surgir("0.1s")}`}>
               {/* Marca (solo móvil, sin el panel oscuro) */}
@@ -96,16 +101,16 @@ export default function LoginPage() {
                   alt="Andritz"
                   width={110}
                   height={26}
-                  className="h-[22px] w-auto"
+                  className="h-[22px] w-auto dark:brightness-0 dark:invert"
                   priority
                 />
               </div>
 
-              <p className="eyebrow text-andritz">Academia de Liderazgo · Andritz</p>
+              <p className="eyebrow text-acento">Academia de Liderazgo · Andritz</p>
               <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight">
                 Ingresa a tu espacio
               </h1>
-              <p className="mt-3 text-sm leading-relaxed text-tinta-suave">
+              <p className="mt-3 text-sm leading-relaxed text-ink-suave">
                 El material, el calendario y los registros del programa, en un solo
                 lugar.
               </p>
@@ -115,13 +120,13 @@ export default function LoginPage() {
           </div>
 
           <footer className="px-6 pb-8 sm:px-12">
-            <p className="mx-auto max-w-sm font-mono text-xs text-tinta-suave">
+            <p className="mx-auto max-w-sm font-mono text-xs text-ink-suave">
               Plataforma provista por{" "}
               <a
                 href="https://www.adapsysgroup.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-linea underline-offset-2 transition-colors hover:text-andritz"
+                className="underline decoration-borde underline-offset-2 transition-colors hover:text-acento"
               >
                 Adapsys
               </a>

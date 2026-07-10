@@ -53,12 +53,12 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
           ? "text-white/70"
           : "text-white"
         : estado === "programada"
-          ? "text-tinta-suave"
-          : "text-tinta"
+          ? "text-ink-suave"
+          : "text-ink"
     );
 
-  const metaNodo = oscuro ? "text-white/60" : "text-tinta-suave";
-  const acento = oscuro ? "text-andritz-claro" : "text-andritz";
+  const metaNodo = oscuro ? "text-white/60" : "text-ink-suave";
+  const acento = oscuro ? "text-andritz-claro" : "text-acento";
 
   return (
     <div
@@ -68,7 +68,7 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
       {/* ── Desktop / tablet: horizontal ── */}
       <div className="hidden md:block">
         <div className="flex items-end justify-between pb-6">
-          <p className={cn("eyebrow", oscuro ? "text-white/55" : "text-tinta-suave")}>
+          <p className={cn("eyebrow", oscuro ? "text-white/55" : "text-ink-suave")}>
             A · Dónde estamos
           </p>
           <p className={cn("eyebrow", acento)}>B · La gran oportunidad</p>
@@ -79,7 +79,7 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
           <div
             className={cn(
               "absolute left-[22px] right-[24px] top-[21px] h-[2px]",
-              oscuro ? "bg-white/[0.18]" : "bg-linea"
+              oscuro ? "bg-white/[0.18]" : "bg-borde"
             )}
             aria-hidden
           />
@@ -98,7 +98,7 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
           <div
             className={cn(
               "absolute right-[16px] top-[16px] h-3 w-3 rotate-45 border-r-2 border-t-2",
-              oscuro ? "border-white/30" : "border-linea"
+              oscuro ? "border-white/30" : "border-borde"
             )}
             aria-hidden
           />
@@ -132,13 +132,13 @@ export function RutaAB({ modulos, sesiones, tono = "claro", className }: Props) 
 
       {/* ── Mobile: vertical ── */}
       <div className="md:hidden">
-        <p className={cn("eyebrow mb-4", oscuro ? "text-white/55" : "text-tinta-suave")}>
+        <p className={cn("eyebrow mb-4", oscuro ? "text-white/55" : "text-ink-suave")}>
           A · Dónde estamos
         </p>
         <ol
           className={cn(
             "relative ml-[21px] border-l-2",
-            oscuro ? "border-white/20" : "border-linea"
+            oscuro ? "border-white/20" : "border-borde"
           )}
         >
           {nodos.map(({ modulo, estado, sesion }) => (
@@ -201,7 +201,7 @@ function Nodo({
           "border-2",
           oscuro
             ? "border-andritz-claro bg-tinta animate-[pulso-nodo_2.6s_ease-in-out_infinite]"
-            : "border-andritz bg-white animate-[pulso-nodo-claro_2.6s_ease-in-out_infinite]"
+            : "border-andritz bg-superficie-alta animate-[pulso-nodo-claro_2.6s_ease-in-out_infinite]"
         )}
         title={`Módulo ${numero}: próxima sesión`}
       >
@@ -221,7 +221,7 @@ function Nodo({
       className={cn(
         base,
         "border-2",
-        oscuro ? "border-white/25 bg-transparent" : "border-linea bg-hueso"
+        oscuro ? "border-white/25 bg-transparent" : "border-borde bg-superficie-suave"
       )}
       title={`Módulo ${numero}: programado`}
     >
@@ -240,7 +240,7 @@ export function MiniRuta({
 }) {
   return (
     <div className="flex items-center gap-1.5" aria-hidden>
-      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-tinta-suave">
+      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink-suave">
         A
       </span>
       {modulos.map((m) => (
@@ -248,11 +248,11 @@ export function MiniRuta({
           key={m.id}
           className={cn(
             "h-1.5 w-1.5 rounded-full",
-            m.id === moduloActualId ? "scale-125 bg-andritz" : "bg-linea"
+            m.id === moduloActualId ? "scale-125 bg-andritz" : "bg-borde"
           )}
         />
       ))}
-      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-tinta-suave">
+      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink-suave">
         B
       </span>
     </div>

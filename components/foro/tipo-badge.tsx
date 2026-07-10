@@ -3,11 +3,15 @@ import { cn } from "@/lib/utils";
 import type { TipoPost } from "@/lib/foro";
 
 const MAPA: Record<TipoPost, { label: string; clase: string; Icono: LucideIcon }> = {
-  pregunta: { label: "Pregunta", clase: "bg-andritz/10 text-andritz", Icono: HelpCircle },
-  anuncio: { label: "Anuncio", clase: "bg-teal-ad/10 text-teal-ad", Icono: Megaphone },
+  pregunta: { label: "Pregunta", clase: "bg-andritz/10 text-acento", Icono: HelpCircle },
+  anuncio: {
+    label: "Anuncio",
+    clase: "bg-teal-ad/10 text-teal-ad dark:text-[#5fc7cf]",
+    Icono: Megaphone,
+  },
   discusion: {
     label: "Discusión",
-    clase: "bg-linea/60 text-tinta-suave",
+    clase: "bg-borde/60 text-ink-suave",
     Icono: MessagesSquare,
   },
 };

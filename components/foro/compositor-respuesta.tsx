@@ -31,7 +31,7 @@ export function CompositorRespuesta({ postId }: { postId: string }) {
         placeholder="Escribe una respuesta…"
         rows={3}
         maxLength={5000}
-        className="w-full resize-y rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
+        className="w-full resize-y rounded-lg border border-borde bg-superficie-alta px-3.5 py-2.5 text-sm text-ink outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
       />
       {error && (
         <p role="alert" className="text-sm text-magenta-ad">

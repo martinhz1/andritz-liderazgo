@@ -11,12 +11,13 @@ import {
   YAxis,
 } from "recharts";
 import { bandaDe, type BandaPercepcion } from "@/lib/types";
+import { useTema } from "@/components/tema/tema-provider";
+import { coloresGrafico } from "@/lib/colores-grafico";
 
 // Capa de datos = paleta Adapsys (el azul Andritz no entra a los gráficos)
 export const COLOR_FAVORABLE = "#00B8B8";
 export const COLOR_NEUTRAL = "#B9C9D3";
 export const COLOR_DESFAVORABLE = "#C20C5B";
-const COLOR_EJE = "#3D5568";
 
 // Color de marca por banda de favorabilidad (Baja alerta · Media · Alta).
 export const COLOR_BANDA: Record<BandaPercepcion, string> = {
@@ -33,6 +34,8 @@ export interface FilaDimension {
 
 export function FavorabilidadDimensiones({ datos }: { datos: FilaDimension[] }) {
   const alto = datos.length * 64 + 40;
+  const { tema } = useTema();
+  const c = coloresGrafico(tema);
 
   return (
     <div style={{ width: "100%", height: alto }} aria-hidden={false}>
@@ -48,39 +51,39 @@ export function FavorabilidadDimensiones({ datos }: { datos: FilaDimension[] }) 
             domain={[0, 100]}
             ticks={[0, 20, 40, 60, 80, 100]}
             tickFormatter={(v) => `${v}%`}
-            tick={{ fill: COLOR_EJE, fontSize: 11, fontFamily: "IBM Plex Mono" }}
-            axisLine={{ stroke: "#D7E0E7" }}
+            tick={{ fill: c.eje, fontSize: 11, fontFamily: "IBM Plex Mono" }}
+            axisLine={{ stroke: c.ejeLinea }}
             tickLine={false}
           />
           <YAxis
             type="category"
             dataKey="id"
             width={40}
-            tick={{ fill: COLOR_EJE, fontSize: 12, fontFamily: "IBM Plex Mono" }}
+            tick={{ fill: c.eje, fontSize: 12, fontFamily: "IBM Plex Mono" }}
             axisLine={false}
             tickLine={false}
           />
           {/* Umbrales de banda: Baja ≤60 · Media 61–80 · Alta 81–100 */}
           <ReferenceLine
             x={60}
-            stroke={COLOR_EJE}
+            stroke={c.eje}
             strokeDasharray="4 4"
             label={{
               value: "60",
               position: "top",
-              fill: COLOR_EJE,
+              fill: c.eje,
               fontSize: 10,
               fontFamily: "IBM Plex Mono",
             }}
           />
           <ReferenceLine
             x={80}
-            stroke={COLOR_EJE}
+            stroke={c.eje}
             strokeDasharray="4 4"
             label={{
               value: "80",
               position: "top",
-              fill: COLOR_EJE,
+              fill: c.eje,
               fontSize: 10,
               fontFamily: "IBM Plex Mono",
             }}
@@ -94,7 +97,7 @@ export function FavorabilidadDimensiones({ datos }: { datos: FilaDimension[] }) 
               position="right"
               formatter={(v: number) => `${v}%`}
               style={{
-                fill: "#0C2A3E",
+                fill: c.etiqueta,
                 fontSize: 13,
                 fontWeight: 600,
                 fontFamily: "IBM Plex Mono",

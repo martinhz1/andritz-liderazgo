@@ -34,11 +34,11 @@ export default async function RepositorioPage({
     <div>
       <MarcarVista fuente="repositorio" />
       <div className="animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.04s_both]">
-        <p className="eyebrow text-andritz">Repositorio</p>
+        <p className="eyebrow text-acento">Repositorio</p>
         <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">
           Material del programa
         </h1>
-        <p className="mt-3 max-w-xl text-tinta-suave">
+        <p className="mt-3 max-w-xl text-ink-suave">
           Todo el material de la academia, organizado por módulo y tipo. Antes de
           cada sesión encontrarás aquí las lecturas y tareas correspondientes.
         </p>

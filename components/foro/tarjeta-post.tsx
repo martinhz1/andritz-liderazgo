@@ -19,15 +19,15 @@ export function TarjetaPost({
   return (
     <article
       className={cn(
-        "rounded-2xl border bg-white p-5 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]",
-        post.fijado ? "border-andritz/40" : "border-linea"
+        "rounded-2xl border bg-superficie-alta p-5 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]",
+        post.fijado ? "border-andritz/40" : "border-borde"
       )}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
           <TipoBadge tipo={post.tipo} />
           {post.fijado && (
-            <span className="inline-flex items-center gap-1 font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-andritz">
+            <span className="inline-flex items-center gap-1 font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-acento">
               <Pin className="h-3 w-3" aria-hidden />
               Fijado
             </span>
@@ -45,11 +45,11 @@ export function TarjetaPost({
       </div>
 
       <Link href={`/foro/${post.id}`} className="group mt-3 block">
-        <h2 className="font-display text-lg font-semibold leading-snug text-tinta group-hover:text-andritz">
+        <h2 className="font-display text-lg font-semibold leading-snug text-ink group-hover:text-acento">
           {post.titulo}
         </h2>
       </Link>
-      <p className="mt-1.5 line-clamp-2 whitespace-pre-wrap text-sm leading-relaxed text-tinta-suave">
+      <p className="mt-1.5 line-clamp-2 whitespace-pre-wrap text-sm leading-relaxed text-ink-suave">
         {post.cuerpo}
       </p>
 
@@ -61,7 +61,7 @@ export function TarjetaPost({
         />
         <Link
           href={`/foro/${post.id}`}
-          className="inline-flex items-center gap-1.5 rounded-md border border-linea px-2.5 py-1 font-mono text-xs text-tinta-suave transition-colors hover:border-andritz hover:text-andritz"
+          className="inline-flex items-center gap-1.5 rounded-md border border-borde px-2.5 py-1 font-mono text-xs text-ink-suave transition-colors hover:border-andritz hover:text-acento"
         >
           <MessageSquare className="h-3.5 w-3.5" aria-hidden />
           {post.nRespuestas} {post.nRespuestas === 1 ? "respuesta" : "respuestas"}

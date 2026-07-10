@@ -51,8 +51,8 @@ export function BotonReaccion({
       className={cn(
         "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 font-mono text-xs transition-colors",
         estado.activo
-          ? "border-andritz bg-andritz/5 text-andritz"
-          : "border-linea text-tinta-suave hover:border-andritz hover:text-andritz"
+          ? "border-andritz bg-andritz/5 text-acento"
+          : "border-borde text-ink-suave hover:border-andritz hover:text-acento"
       )}
     >
       <Heart className={cn("h-3.5 w-3.5", estado.activo && "fill-current")} aria-hidden />

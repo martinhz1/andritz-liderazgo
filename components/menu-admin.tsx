@@ -34,7 +34,7 @@ export function MenuAdmin({ pathname }: { pathname: string }) {
           "flex h-10 items-center gap-1.5 rounded-[10px] border px-3 text-[13px] font-medium transition-colors",
           activo
             ? "border-andritz bg-andritz text-white"
-            : "border-linea bg-white text-tinta-suave hover:border-andritz hover:text-andritz"
+            : "border-borde bg-superficie-alta text-ink-suave hover:border-andritz hover:text-acento"
         )}
       >
         <LayoutDashboard className="h-4 w-4" aria-hidden />
@@ -52,9 +52,9 @@ export function MenuAdmin({ pathname }: { pathname: string }) {
           />
           <div
             role="menu"
-            className="absolute right-0 z-50 mt-2 w-56 rounded-2xl border border-linea bg-white p-2 shadow-[0_24px_60px_-30px_rgba(12,42,62,0.6)]"
+            className="absolute right-0 z-50 mt-2 w-56 rounded-2xl border border-borde bg-superficie-alta p-2 shadow-[0_24px_60px_-30px_rgba(12,42,62,0.6)]"
           >
-            <p className="eyebrow px-2 pb-1 pt-1 text-tinta-suave">
+            <p className="eyebrow px-2 pb-1 pt-1 text-ink-suave">
               Panel de coordinación
             </p>
             {ITEMS.map(({ href, label, Icono }) => {
@@ -66,7 +66,7 @@ export function MenuAdmin({ pathname }: { pathname: string }) {
                   onClick={() => setAbierto(false)}
                   className={cn(
                     "flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors",
-                    act ? "bg-[#eef4f8] text-andritz" : "text-tinta hover:bg-hueso"
+                    act ? "bg-superficie-suave text-acento" : "text-ink hover:bg-superficie-suave"
                   )}
                 >
                   <Icono className="h-4 w-4" aria-hidden />

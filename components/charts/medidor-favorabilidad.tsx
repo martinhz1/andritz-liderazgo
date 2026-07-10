@@ -17,12 +17,12 @@ export function MedidorFavorabilidad({ valor }: { valor: number }) {
           <div className="bg-banda-alta" style={{ width: "20%" }} />
         </div>
         <span
-          className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-[0_1px_5px_rgba(12,42,62,0.45)]"
+          className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-superficie-alta shadow-[0_1px_5px_rgba(12,42,62,0.45)]"
           style={{ left: `${pos}%`, backgroundColor: color }}
           aria-hidden
         />
       </div>
-      <div className="relative mt-1.5 h-3 font-mono text-[10px] text-tinta-suave">
+      <div className="relative mt-1.5 h-3 font-mono text-[10px] text-ink-suave">
         <span className="absolute -translate-x-1/2" style={{ left: "60%" }}>
           60
         </span>

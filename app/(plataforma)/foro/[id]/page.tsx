@@ -36,18 +36,18 @@ export default async function PostPage({
       <MarcarVista fuente="foro" />
       <Link
         href="/foro"
-        className="inline-flex items-center gap-1.5 font-mono text-xs text-tinta-suave transition-colors hover:text-andritz"
+        className="inline-flex items-center gap-1.5 font-mono text-xs text-ink-suave transition-colors hover:text-acento"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
         Volver al foro
       </Link>
 
-      <article className="mt-4 rounded-2xl border border-linea bg-white p-6 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]">
+      <article className="mt-4 rounded-2xl border border-borde bg-superficie-alta p-6 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]">
         <div className="flex items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <TipoBadge tipo={post.tipo} />
             {post.fijado && (
-              <span className="inline-flex items-center gap-1 font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-andritz">
+              <span className="inline-flex items-center gap-1 font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-acento">
                 <Pin className="h-3 w-3" aria-hidden />
                 Fijado
               </span>
@@ -73,7 +73,7 @@ export default async function PostPage({
         <h1 className="mt-4 font-display text-2xl font-bold tracking-tight">
           {post.titulo}
         </h1>
-        <p className="mt-3 whitespace-pre-wrap leading-relaxed text-tinta">
+        <p className="mt-3 whitespace-pre-wrap leading-relaxed text-ink">
           {post.cuerpo}
         </p>
 
@@ -91,12 +91,12 @@ export default async function PostPage({
           {n} {n === 1 ? "respuesta" : "respuestas"}
         </h2>
 
-        <div className="mt-4 rounded-2xl border border-linea bg-white p-5">
+        <div className="mt-4 rounded-2xl border border-borde bg-superficie-alta p-5">
           <CompositorRespuesta postId={post.id} />
         </div>
 
         {n > 0 && (
-          <ul className="mt-4 rounded-2xl border border-linea bg-white px-5">
+          <ul className="mt-4 rounded-2xl border border-borde bg-superficie-alta px-5">
             {post.respuestas.map((r) => (
               <RespuestaItem
                 key={r.id}

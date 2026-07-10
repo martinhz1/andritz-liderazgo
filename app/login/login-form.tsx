@@ -40,7 +40,7 @@ export function LoginForm() {
       <div>
         <label
           htmlFor="usuario"
-          className="mb-1.5 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-tinta-suave"
+          className="mb-1.5 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-ink-suave"
         >
           Usuario
         </label>
@@ -53,13 +53,13 @@ export function LoginForm() {
           required
           value={usuario}
           onChange={(e) => setUsuario(e.target.value)}
-          className="w-full rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
+          className="w-full rounded-lg border border-borde bg-superficie-alta px-3.5 py-2.5 text-sm text-ink outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
         />
       </div>
       <div>
         <label
           htmlFor="password"
-          className="mb-1.5 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-tinta-suave"
+          className="mb-1.5 block font-mono text-xs font-medium uppercase tracking-[0.1em] text-ink-suave"
         >
           Contraseña
         </label>
@@ -71,7 +71,7 @@ export function LoginForm() {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
+          className="w-full rounded-lg border border-borde bg-superficie-alta px-3.5 py-2.5 text-sm text-ink outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
         />
       </div>
 

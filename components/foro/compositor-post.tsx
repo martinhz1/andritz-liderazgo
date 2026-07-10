@@ -12,7 +12,7 @@ const TIPOS_BASE: { valor: TipoPost; label: string }[] = [
 ];
 
 const INPUT =
-  "w-full rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15";
+  "w-full rounded-lg border border-borde bg-superficie-alta px-3.5 py-2.5 text-sm text-ink outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15";
 
 export function CompositorPost({
   trigger,
@@ -74,7 +74,7 @@ export function CompositorPost({
                     "rounded-md border px-3 py-1.5 font-mono text-xs font-medium transition-colors",
                     tipo === t.valor
                       ? "border-andritz bg-andritz text-white"
-                      : "border-linea bg-white text-tinta-suave hover:border-andritz hover:text-andritz"
+                      : "border-borde bg-superficie-alta text-ink-suave hover:border-andritz hover:text-acento"
                   )}
                 >
                   {t.label}
@@ -124,7 +124,7 @@ export function CompositorPost({
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="rounded-lg border border-linea bg-white px-4 py-2.5 text-sm font-medium text-tinta-suave transition-colors hover:border-andritz hover:text-andritz"
+              className="rounded-lg border border-borde bg-superficie-alta px-4 py-2.5 text-sm font-medium text-ink-suave transition-colors hover:border-andritz hover:text-acento"
             >
               Cancelar
             </button>

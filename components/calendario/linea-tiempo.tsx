@@ -72,7 +72,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
     <>
       {/* Filtros */}
       <div className="mt-7 flex items-center gap-2 animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.1s_both]">
-        <span className="mr-0.5 font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-tinta-suave">
+        <span className="mr-0.5 font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-ink-suave">
           Ver
         </span>
         {FILTROS.map((f) => {
@@ -87,14 +87,14 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                 "flex items-center gap-2 rounded-lg border px-3.5 py-2 font-mono text-xs font-medium transition-colors",
                 activo
                   ? "border-andritz bg-andritz text-white"
-                  : "border-linea bg-white text-tinta-suave hover:border-andritz"
+                  : "border-borde bg-superficie-alta text-ink-suave hover:border-andritz"
               )}
             >
               {f.label}
               <span
                 className={cn(
                   "rounded-full px-2 py-px font-mono text-[11px]",
-                  activo ? "bg-white/20 text-white" : "bg-[#eef2f5] text-[#6a7f8e]"
+                  activo ? "bg-white/20 text-white" : "bg-superficie-suave text-[#6a7f8e] dark:text-ink-suave"
                 )}
               >
                 {f.count}
@@ -116,7 +116,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
               ? "border-andritz"
               : s.estado === "realizada"
                 ? "border-teal-ad"
-                : "border-[#c4d0d9]";
+                : "border-borde";
 
           return (
             <li
@@ -129,7 +129,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                 <span
                   aria-hidden
                   className={cn(
-                    "absolute left-[120px] w-[2px] -translate-x-1/2 bg-[#dbe3e9]",
+                    "absolute left-[120px] w-[2px] -translate-x-1/2 bg-borde",
                     primero ? "top-[35px] bottom-0" : ultimo ? "top-0 h-[35px]" : "top-0 bottom-0"
                   )}
                 />
@@ -140,7 +140,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
               {/* Columna fecha */}
               <div className="pt-4 text-right">
                 {s.estado === "realizada" ? (
-                  <p className="font-mono text-xs font-medium leading-tight text-teal-ad">
+                  <p className="font-mono text-xs font-medium leading-tight text-teal-ad dark:text-[#5fc7cf]">
                     Sesión
                     <br />
                     realizada
@@ -150,7 +150,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                     <p
                       className={cn(
                         "font-mono text-xs font-medium uppercase tracking-[0.12em]",
-                        esProxima ? "text-andritz" : "text-[#8ca0af]"
+                        esProxima ? "text-acento" : "text-[#8ca0af] dark:text-ink-suave/70"
                       )}
                     >
                       {s.fecha.mes}
@@ -158,32 +158,32 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                     <p
                       className={cn(
                         "font-display text-[38px] font-extrabold leading-none tracking-tight",
-                        esProxima ? "text-andritz" : "text-tinta"
+                        esProxima ? "text-acento" : "text-ink"
                       )}
                     >
                       {s.fecha.dia}
                     </p>
-                    <p className="mt-1.5 font-mono text-[11px] text-[#8ca0af]">
+                    <p className="mt-1.5 font-mono text-[11px] text-[#8ca0af] dark:text-ink-suave/70">
                       {s.fecha.diaSemana} · {s.fecha.anio}
                     </p>
                   </>
                 ) : (
-                  <p className="font-mono text-xs text-[#8ca0af]">Por confirmar</p>
+                  <p className="font-mono text-xs text-[#8ca0af] dark:text-ink-suave/70">Por confirmar</p>
                 )}
               </div>
 
               {/* Tarjeta */}
               <div
                 className={cn(
-                  "rounded-2xl border bg-white px-6 py-5.5",
+                  "rounded-2xl border bg-superficie-alta px-6 py-5.5",
                   esProxima
-                    ? "border-[#b9d9ee] shadow-[0_20px_42px_-26px_rgba(0,108,175,0.5)] [outline:3px_solid_rgba(0,108,175,0.08)]"
-                    : "border-linea shadow-[0_12px_30px_-26px_rgba(12,42,62,0.5)]"
+                    ? "border-[#b9d9ee] dark:border-andritz/40 shadow-[0_20px_42px_-26px_rgba(0,108,175,0.5)] [outline:3px_solid_rgba(0,108,175,0.08)]"
+                    : "border-borde shadow-[0_12px_30px_-26px_rgba(12,42,62,0.5)]"
                 )}
               >
                 <div className="flex items-center gap-2.5">
                   <BadgeEstado estado={s.estado} />
-                  <span className="ml-auto rounded-full border border-linea px-2.5 py-1 font-mono text-[10.5px] tracking-[0.06em] text-tinta-suave">
+                  <span className="ml-auto rounded-full border border-borde px-2.5 py-1 font-mono text-[10.5px] tracking-[0.06em] text-ink-suave">
                     Módulo {pad(s.numero)}
                   </span>
                 </div>
@@ -191,7 +191,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                 <h3 className="mt-3.5 font-display text-xl font-bold tracking-tight">
                   {s.titulo}
                 </h3>
-                <p className={cn("mt-3 border-l-[3px] pl-3.5 text-sm italic leading-relaxed text-tinta-suave", acento)}>
+                <p className={cn("mt-3 border-l-[3px] pl-3.5 text-sm italic leading-relaxed text-ink-suave", acento)}>
                   {s.pregunta}
                 </p>
 
@@ -200,10 +200,10 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                   <Meta icono={MapPin}>{s.fecha ? s.lugar : "Por confirmar"}</Meta>
                 </div>
 
-                <div className="mt-5 flex flex-wrap items-center gap-2.5 border-t border-[#eef2f5] pt-4">
+                <div className="mt-5 flex flex-wrap items-center gap-2.5 border-t border-borde pt-4">
                   <Link
                     href={s.materialHref}
-                    className="flex items-center gap-1.5 rounded-md border border-linea px-2.5 py-1.5 font-mono text-[11.5px] font-medium text-andritz transition-colors hover:border-andritz hover:bg-[#f4f9fc]"
+                    className="flex items-center gap-1.5 rounded-md border border-borde px-2.5 py-1.5 font-mono text-[11.5px] font-medium text-acento transition-colors hover:border-andritz hover:bg-superficie-suave"
                   >
                     <FolderOpen className="h-3.5 w-3.5" strokeWidth={1.9} aria-hidden />
                     Material
@@ -211,7 +211,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                   {s.tareaHref && (
                     <Link
                       href={s.tareaHref}
-                      className="flex items-center gap-1.5 rounded-md border border-linea px-2.5 py-1.5 font-mono text-[11.5px] font-medium text-andritz transition-colors hover:border-andritz hover:bg-[#f4f9fc]"
+                      className="flex items-center gap-1.5 rounded-md border border-borde px-2.5 py-1.5 font-mono text-[11.5px] font-medium text-acento transition-colors hover:border-andritz hover:bg-superficie-suave"
                     >
                       <ListChecks className="h-3.5 w-3.5" strokeWidth={1.9} aria-hidden />
                       Tarea previa
@@ -220,7 +220,7 @@ export function LineaTiempo({ sesiones }: { sesiones: SesionVM[] }) {
                   <button
                     type="button"
                     onClick={() => setDetalle(s.id)}
-                    className="ml-auto flex items-center gap-1.5 px-1 py-1.5 font-mono text-[11.5px] font-medium tracking-[0.04em] text-andritz transition-colors hover:text-andritz-oscuro"
+                    className="ml-auto flex items-center gap-1.5 px-1 py-1.5 font-mono text-[11.5px] font-medium tracking-[0.04em] text-acento transition-colors hover:text-andritz-oscuro"
                   >
                     Ver detalle
                     <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
@@ -256,21 +256,21 @@ function NodoTiempo({ estado }: { estado: EstadoSesion }) {
         aria-hidden
         className={cn(
           base,
-          "border-2 border-andritz bg-white animate-[pulso-nodo-claro_2.6s_ease-in-out_infinite]"
+          "border-2 border-andritz bg-superficie-alta animate-[pulso-nodo-claro_2.6s_ease-in-out_infinite]"
         )}
       >
         <span className="h-2.5 w-2.5 rounded-full bg-andritz" />
       </span>
     );
   }
-  return <span aria-hidden className={cn(base, "border-2 border-[#c4d0d9] bg-hueso")} />;
+  return <span aria-hidden className={cn(base, "border-2 border-borde bg-superficie-suave")} />;
 }
 
 function BadgeEstado({ estado }: { estado: EstadoSesion }) {
   const estilo: Record<EstadoSesion, string> = {
-    proxima: "text-andritz bg-[#eaf3fa] border-[#b9d9ee]",
-    realizada: "text-teal-ad bg-[#f0f8f8] border-[#b9dee0]",
-    programada: "text-[#6a7f8e] bg-[#eef2f5] border-[#dbe3e9]",
+    proxima: "text-acento bg-[#eaf3fa] dark:bg-andritz/15 border-[#b9d9ee] dark:border-andritz/40",
+    realizada: "text-teal-ad dark:text-[#5fc7cf] bg-[#f0f8f8] dark:bg-teal-ad/15 border-[#b9dee0] dark:border-teal-ad/40",
+    programada: "text-[#6a7f8e] dark:text-ink-suave bg-superficie-suave border-borde",
   };
   return (
     <span
@@ -292,8 +292,8 @@ function Meta({
   children: React.ReactNode;
 }) {
   return (
-    <span className="flex items-center gap-2 font-mono text-xs text-tinta-suave">
-      <Icono className="h-[15px] w-[15px] text-andritz" strokeWidth={1.9} aria-hidden />
+    <span className="flex items-center gap-2 font-mono text-xs text-ink-suave">
+      <Icono className="h-[15px] w-[15px] text-acento" strokeWidth={1.9} aria-hidden />
       {children}
     </span>
   );
@@ -315,7 +315,7 @@ function PanelDetalle({
         onClick={onCerrar}
         className="fixed inset-0 z-90 cursor-default bg-tinta/40 animate-[aparecer_0.25s_ease_both]"
       />
-      <aside className="fixed inset-y-0 right-0 z-[91] w-[min(468px,92vw)] overflow-y-auto bg-white shadow-[-30px_0_60px_-30px_rgba(12,42,62,0.6)] animate-[surgir-lateral_0.32s_cubic-bezier(0.22,1,0.36,1)_both]">
+      <aside className="fixed inset-y-0 right-0 z-[91] w-[min(468px,92vw)] overflow-y-auto bg-superficie-alta shadow-[-30px_0_60px_-30px_rgba(12,42,62,0.6)] animate-[surgir-lateral_0.32s_cubic-bezier(0.22,1,0.36,1)_both]">
         {/* Cabecera oscura */}
         <div className="relative overflow-hidden bg-tinta px-7 pb-7 pt-6 text-white">
           <div
@@ -368,7 +368,7 @@ function PanelDetalle({
           <div className="mt-6 flex flex-col gap-2.5">
             <Link
               href={s.materialHref}
-              className="flex items-center justify-between gap-3 rounded-lg border border-linea bg-white px-4 py-3 text-sm font-medium text-tinta transition-colors hover:border-andritz hover:text-andritz"
+              className="flex items-center justify-between gap-3 rounded-lg border border-borde bg-superficie-alta px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-andritz hover:text-acento"
             >
               Material del módulo en el Repositorio
               <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
@@ -376,7 +376,7 @@ function PanelDetalle({
             {s.tareaHref && (
               <Link
                 href={s.tareaHref}
-                className="flex items-center justify-between gap-3 rounded-lg border border-linea bg-white px-4 py-3 text-sm font-medium text-tinta transition-colors hover:border-andritz hover:text-andritz"
+                className="flex items-center justify-between gap-3 rounded-lg border border-borde bg-superficie-alta px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-andritz hover:text-acento"
               >
                 {s.tareaTitulo ?? "Tarea previa"}
                 <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
@@ -385,8 +385,8 @@ function PanelDetalle({
           </div>
 
           {AGREGAR_CALENDARIO && s.fecha && (
-            <div className="mt-6 border-t border-[#eef2f5] pt-5">
-              <p className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-tinta-suave">
+            <div className="mt-6 border-t border-borde pt-5">
+              <p className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-ink-suave">
                 Agregar a mi calendario
               </p>
               <div className="flex gap-2.5">
@@ -402,7 +402,7 @@ function PanelDetalle({
                 <button
                   type="button"
                   onClick={() => descargarIcs(s)}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-linea bg-white px-3.5 py-3 text-sm font-semibold text-tinta transition-colors hover:border-andritz hover:text-andritz"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-borde bg-superficie-alta px-3.5 py-3 text-sm font-semibold text-ink transition-colors hover:border-andritz hover:text-acento"
                 >
                   <Download className="h-4 w-4" aria-hidden />
                   Outlook (.ics)
@@ -448,16 +448,16 @@ function FilaDetalle({
   children: React.ReactNode;
 }) {
   return (
-    <li className={cn("flex gap-3.5 py-3.5", !ultima && "border-b border-[#eef2f5]")}>
-      <span className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[10px] bg-[#eef4f8] text-andritz">
+    <li className={cn("flex gap-3.5 py-3.5", !ultima && "border-b border-borde")}>
+      <span className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[10px] bg-superficie-suave text-acento">
         <Icono className="h-[18px] w-[18px]" strokeWidth={1.9} aria-hidden />
       </span>
       <div>
-        <p className="font-mono text-[10.5px] uppercase tracking-[0.1em] text-[#8ca0af]">
+        <p className="font-mono text-[10.5px] uppercase tracking-[0.1em] text-[#8ca0af] dark:text-ink-suave/70">
           {label}
         </p>
-        <p className="mt-0.5 text-sm font-semibold text-tinta">{children}</p>
-        {sub && <p className="mt-0.5 text-[13px] leading-normal text-tinta-suave">{sub}</p>}
+        <p className="mt-0.5 text-sm font-semibold text-ink">{children}</p>
+        {sub && <p className="mt-0.5 text-[13px] leading-normal text-ink-suave">{sub}</p>}
       </div>
     </li>
   );

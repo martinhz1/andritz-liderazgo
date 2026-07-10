@@ -16,11 +16,11 @@ export default async function RegistrosPage() {
 
   return (
     <div>
-      <p className="eyebrow text-tinta-suave">Registros gráficos</p>
+      <p className="eyebrow text-ink-suave">Registros gráficos</p>
       <h1 className="mt-2 font-display text-3xl font-bold tracking-tight md:text-4xl">
         La academia en imágenes
       </h1>
-      <p className="mt-2 max-w-2xl text-tinta-suave">
+      <p className="mt-2 max-w-2xl text-ink-suave">
         Fotografías de cada jornada. Después de cada sesión publicamos aquí el
         registro del trabajo del equipo.
       </p>
@@ -39,7 +39,7 @@ export default async function RegistrosPage() {
                   <Badge variant="outline">{fechaCorta(sesion.fecha)}</Badge>
                 )}
                 {modulo && (
-                  <span className="font-mono text-xs text-tinta-suave">
+                  <span className="font-mono text-xs text-ink-suave">
                     Módulo {String(modulo.numero).padStart(2, "0")}
                   </span>
                 )}

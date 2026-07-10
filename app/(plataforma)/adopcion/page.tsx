@@ -10,7 +10,7 @@ import { tiempoRelativo } from "@/lib/utils";
 export const metadata = { title: "Adopción · Academia de Liderazgo Andritz" };
 
 const CARD =
-  "rounded-2xl border border-linea bg-white p-6 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]";
+  "rounded-2xl border border-borde bg-superficie-alta p-6 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]";
 
 const surgir = (delay: string) =>
   `animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_${delay}_both]`;
@@ -30,11 +30,11 @@ export default async function AdopcionPage() {
     <div>
       {/* Encabezado */}
       <div className={surgir("0.04s")}>
-        <p className="eyebrow text-andritz">Adopción</p>
+        <p className="eyebrow text-acento">Adopción</p>
         <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">
           Adopción de la plataforma
         </h1>
-        <p className="mt-3 max-w-2xl text-tinta-suave">
+        <p className="mt-3 max-w-2xl text-ink-suave">
           Uso de la Academia por parte del equipo, para seguimiento interno de
           Adapsys. La actividad se registra desde el lanzamiento; los tiempos son
           aproximados.
@@ -44,17 +44,17 @@ export default async function AdopcionPage() {
       {/* KPI row */}
       <div className={`mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${surgir("0.1s")}`}>
         <div className={CARD}>
-          <p className="eyebrow text-tinta-suave">Adopción</p>
+          <p className="eyebrow text-ink-suave">Adopción</p>
           <div className="mt-2 flex items-end gap-2.5">
-            <span className="font-display text-5xl font-extrabold leading-none text-tinta">
+            <span className="font-display text-5xl font-extrabold leading-none text-ink">
               {pct}
               <span className="text-2xl">%</span>
             </span>
           </div>
-          <p className="mt-2 font-mono text-xs text-tinta-suave">
+          <p className="mt-2 font-mono text-xs text-ink-suave">
             {m.activados} de {m.totalUsuarios} han ingresado
           </p>
-          <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-hueso">
+          <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-superficie-suave">
             <div
               className="h-full rounded-full bg-cyan-ad"
               style={{ width: `${pct}%` }}
@@ -73,7 +73,7 @@ export default async function AdopcionPage() {
           <h2 id="logins-tit" className="font-display text-lg font-bold tracking-tight">
             Inicios de sesión por día
           </h2>
-          <p className="mt-1 text-sm text-tinta-suave">Últimos 30 días.</p>
+          <p className="mt-1 text-sm text-ink-suave">Últimos 30 días.</p>
           <div className="mt-4">
             {m.totalLogins > 0 ? (
               <LoginsPorDia datos={m.loginsPorDia} />
@@ -87,7 +87,7 @@ export default async function AdopcionPage() {
           <h2 id="secciones-tit" className="font-display text-lg font-bold tracking-tight">
             Uso por sección
           </h2>
-          <p className="mt-1 text-sm text-tinta-suave">
+          <p className="mt-1 text-sm text-ink-suave">
             Visitas a cada parte de la plataforma.
           </p>
           <div className="mt-4">
@@ -117,13 +117,13 @@ export default async function AdopcionPage() {
         <h2 id="tabla-tit" className="font-display text-lg font-bold tracking-tight">
           Actividad por persona
         </h2>
-        <p className="mt-1 text-sm text-tinta-suave">
+        <p className="mt-1 text-sm text-ink-suave">
           {m.totalUsuarios} usuarios del programa.
         </p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] text-sm">
             <thead>
-              <tr className="border-b border-linea text-left font-mono text-[11px] uppercase tracking-wide text-tinta-suave">
+              <tr className="border-b border-borde text-left font-mono text-[11px] uppercase tracking-wide text-ink-suave">
                 <th className="pb-2 pr-3 font-medium">Persona</th>
                 <th className="pb-2 pr-3 text-right font-medium">Inicios</th>
                 <th className="pb-2 pr-3 font-medium">Última actividad</th>
@@ -133,25 +133,25 @@ export default async function AdopcionPage() {
             </thead>
             <tbody>
               {m.usuarios.map((u) => (
-                <tr key={u.usuario} className="border-b border-linea/60 last:border-0">
+                <tr key={u.usuario} className="border-b border-borde/60 last:border-0">
                   <td className="py-2.5 pr-3">
                     <span className="flex items-center gap-1.5">
-                      <span className="font-medium text-tinta">{u.nombre}</span>
+                      <span className="font-medium text-ink">{u.nombre}</span>
                       {u.esCoordinador && (
-                        <BadgeCheck className="h-3.5 w-3.5 text-andritz" aria-label="Coordinador/a" />
+                        <BadgeCheck className="h-3.5 w-3.5 text-acento" aria-label="Coordinador/a" />
                       )}
                     </span>
                   </td>
-                  <td className="py-2.5 pr-3 text-right font-mono tabular-nums text-tinta">
+                  <td className="py-2.5 pr-3 text-right font-mono tabular-nums text-ink">
                     {u.logins}
                   </td>
-                  <td className="py-2.5 pr-3 font-mono text-xs text-tinta-suave">
+                  <td className="py-2.5 pr-3 font-mono text-xs text-ink-suave">
                     {u.ultimaActividad ? tiempoRelativo(u.ultimaActividad) : "nunca"}
                   </td>
-                  <td className="py-2.5 pr-3 text-right font-mono tabular-nums text-tinta-suave">
+                  <td className="py-2.5 pr-3 text-right font-mono tabular-nums text-ink-suave">
                     {u.posts}
                   </td>
-                  <td className="py-2.5 text-right font-mono tabular-nums text-tinta-suave">
+                  <td className="py-2.5 text-right font-mono tabular-nums text-ink-suave">
                     {u.respuestas}
                   </td>
                 </tr>
@@ -175,12 +175,12 @@ function TileNumero({
 }) {
   return (
     <div className={CARD}>
-      <p className="eyebrow text-tinta-suave">{titulo}</p>
+      <p className="eyebrow text-ink-suave">{titulo}</p>
       <div className="mt-2 flex items-end gap-2">
-        <span className="font-display text-3xl font-bold leading-none text-tinta">
+        <span className="font-display text-3xl font-bold leading-none text-ink">
           {valor}
         </span>
-        <span className="mb-0.5 text-sm text-tinta-suave">{sufijo}</span>
+        <span className="mb-0.5 text-sm text-ink-suave">{sufijo}</span>
       </div>
     </div>
   );
@@ -188,9 +188,9 @@ function TileNumero({
 
 function StatForo({ valor, etiqueta }: { valor: number; etiqueta: string }) {
   return (
-    <div className="rounded-xl border border-linea/70 p-4 text-center">
-      <p className="font-display text-2xl font-bold text-tinta">{valor}</p>
-      <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-tinta-suave">
+    <div className="rounded-xl border border-borde/70 p-4 text-center">
+      <p className="font-display text-2xl font-bold text-ink">{valor}</p>
+      <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-ink-suave">
         {etiqueta}
       </p>
     </div>
@@ -199,7 +199,7 @@ function StatForo({ valor, etiqueta }: { valor: number; etiqueta: string }) {
 
 function VacioMini({ texto }: { texto: string }) {
   return (
-    <p className="rounded-lg border border-dashed border-linea px-3 py-8 text-center text-sm text-tinta-suave">
+    <p className="rounded-lg border border-dashed border-borde px-3 py-8 text-center text-sm text-ink-suave">
       {texto}
     </p>
   );

@@ -22,11 +22,11 @@ export default async function ForoPage() {
       <MarcarVista fuente="foro" />
       <div className="flex flex-wrap items-end justify-between gap-4 animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.04s_both]">
         <div>
-          <p className="eyebrow text-andritz">Foro</p>
+          <p className="eyebrow text-acento">Foro</p>
           <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight">
             Conversación del programa
           </h1>
-          <p className="mt-3 max-w-xl text-tinta-suave">
+          <p className="mt-3 max-w-xl text-ink-suave">
             Comparte preguntas, ideas y aprendizajes con el resto del equipo. Los
             coordinadores publican anuncios y recordatorios.
           </p>
@@ -46,11 +46,11 @@ export default async function ForoPage() {
       </div>
 
       {posts.length === 0 ? (
-        <div className="mt-8 rounded-2xl border border-dashed border-linea bg-white p-12 text-center animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.12s_both]">
+        <div className="mt-8 rounded-2xl border border-dashed border-borde bg-superficie-alta p-12 text-center animate-[surgir_0.6s_cubic-bezier(0.22,1,0.36,1)_0.12s_both]">
           <p className="font-display text-lg font-semibold">
             Todavía no hay publicaciones
           </p>
-          <p className="mx-auto mt-1.5 max-w-sm text-sm text-tinta-suave">
+          <p className="mx-auto mt-1.5 max-w-sm text-sm text-ink-suave">
             Sé el primero en abrir una conversación: una pregunta, una idea o un
             aprendizaje del programa.
           </p>

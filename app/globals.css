@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
+/* Variante `dark:` ligada al atributo data-theme (no a prefers-color-scheme):
+   el tema lo decide la cookie/toggle, que fija data-theme="oscuro" en <html>. */
+@custom-variant dark (&:where([data-theme="oscuro"], [data-theme="oscuro"] *));
+
 /* ─────────────────────────────────────────────────────────────
    Token system — Academia de Liderazgo Andritz
    Capa de interfaz  = Andritz  (azul #006CAF sobre hueso frío)
    Capa de datos     = Adapsys  (cyan / teal / magenta)
+
+   Tokens semánticos por rol (superficie/ink/borde/acento): cambian en
+   modo oscuro (ver :root[data-theme="dark"]). El modo claro conserva
+   exactamente los valores originales. Marca y datos son constantes.
    ───────────────────────────────────────────────────────────── */
 @theme {
   --color-andritz: #006caf;
@@ -15,6 +23,17 @@
   --color-tinta-suave: #3d5568;
   --color-hueso: #f5f8fa;
   --color-linea: #d7e0e7;
+
+  /* Roles semánticos (valores de modo claro = originales) */
+  --color-superficie: #f5f8fa; /* fondo de página (= hueso) */
+  --color-superficie-alta: #ffffff; /* tarjetas / paneles / inputs */
+  --color-superficie-suave: #eef3f7; /* rellenos sutiles (chips, tiles, nodos) */
+  --color-ink: #0c2a3e; /* texto primario (= tinta) */
+  --color-ink-suave: #3d5568; /* texto secundario (= tinta-suave) */
+  --color-borde: #d7e0e7; /* bordes / hairlines (= linea) */
+  /* Acento de texto/enlaces: azul Andritz en claro; azul claro en oscuro
+     (legible sobre superficies oscuras). Los botones siguen usando bg-andritz. */
+  --color-acento: #006caf;
 
   --color-cyan-ad: #00b8b8;
   --color-teal-ad: #006379;
@@ -31,9 +50,50 @@
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 }
 
+/* ── Modo oscuro "Azul noche" ──
+   Sólo se reasignan los roles semánticos + las bandas; marca y datos quedan
+   constantes. Los textos de acento pasan al azul claro para legibilidad. */
+:root {
+  color-scheme: light;
+}
+:root[data-theme="oscuro"] {
+  --color-superficie: #0b1720;
+  --color-superficie-alta: #12222e;
+  --color-superficie-suave: #1a2c39;
+  --color-ink: #e8eef3;
+  --color-ink-suave: #9fb4c2;
+  --color-borde: #273b4a;
+  --color-acento: #5fb4e4;
+  /* Tintes de banda oscuros (el texto legible lo fija el chip en la vista) */
+  --color-banda-baja: #2a1a22;
+  --color-banda-media: #16241f;
+  --color-banda-alta: #0f2a2c;
+  color-scheme: dark;
+}
+
+/* Fallback sin parpadeo para la primera visita (aún sin cookie): si el sistema
+   está en oscuro y no hay data-theme, aplicar la paleta oscura antes de que
+   corra JS. El script inline fija luego data-theme para que las variantes
+   `dark:` y el toggle queden consistentes. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-superficie: #0b1720;
+    --color-superficie-alta: #12222e;
+    --color-superficie-suave: #1a2c39;
+    --color-ink: #e8eef3;
+    --color-ink-suave: #9fb4c2;
+    --color-borde: #273b4a;
+    --color-acento: #5fb4e4;
+    --color-banda-baja: #2a1a22;
+    --color-banda-media: #16241f;
+    --color-banda-alta: #0f2a2c;
+    color-scheme: dark;
+  }
+}
+
 body {
-  background-color: var(--color-hueso);
-  color: var(--color-tinta);
+  background-color: var(--color-superficie);
+  color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }

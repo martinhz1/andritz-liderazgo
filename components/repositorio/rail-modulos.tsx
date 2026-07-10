@@ -15,7 +15,7 @@ const ESTADO_LABEL: Record<EstadoSesion, string> = {
 };
 
 const CONTADOR =
-  "flex-none rounded-full bg-[#eef2f5] px-2 py-0.5 font-mono text-[11px] text-[#6a7f8e]";
+  "flex-none rounded-full bg-superficie-suave px-2 py-0.5 font-mono text-[11px] text-[#6a7f8e] dark:text-ink-suave";
 
 export function RailModulos({
   modulos,
@@ -32,8 +32,8 @@ export function RailModulos({
 }) {
   return (
     <aside className={cn("md:sticky md:top-28", className)}>
-      <div className="rounded-2xl border border-linea bg-white p-4 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]">
-        <p className="eyebrow px-2 pb-3 pt-1.5 text-tinta-suave">Ruta del programa</p>
+      <div className="rounded-2xl border border-borde bg-superficie-alta p-4 shadow-[0_18px_44px_-32px_rgba(12,42,62,0.5)]">
+        <p className="eyebrow px-2 pb-3 pt-1.5 text-ink-suave">Ruta del programa</p>
 
         {/* Todo el material */}
         <Link
@@ -42,11 +42,11 @@ export function RailModulos({
           className={cn(
             "flex w-full items-center gap-3 rounded-[9px] px-2.5 py-2.5 transition-colors",
             !moduloActivo
-              ? "bg-[#eef4f8] text-andritz"
-              : "bg-transparent text-tinta hover:bg-[#f0f5f9]"
+              ? "bg-superficie-suave text-acento"
+              : "bg-transparent text-ink hover:bg-superficie-suave"
           )}
         >
-          <span className="flex h-[30px] w-[30px] flex-none items-center justify-center rounded-lg bg-[#eef4f8] text-andritz">
+          <span className="flex h-[30px] w-[30px] flex-none items-center justify-center rounded-lg bg-superficie-suave text-acento">
             <LayoutGrid className="h-4 w-4" strokeWidth={1.9} aria-hidden />
           </span>
           <span className="min-w-0 flex-1 font-display text-sm font-semibold">
@@ -55,7 +55,7 @@ export function RailModulos({
           <span className={CONTADOR}>{total}</span>
         </Link>
 
-        <div className="mx-1.5 my-2.5 h-px bg-[#e7edf1]" />
+        <div className="mx-1.5 my-2.5 h-px bg-borde" />
 
         <ul className="flex flex-col gap-0.5">
           {modulos.map((m) => {
@@ -69,7 +69,7 @@ export function RailModulos({
                   aria-current={activo ? "page" : undefined}
                   className={cn(
                     "flex w-full items-center gap-2.5 rounded-[9px] px-2.5 py-2.5 transition-colors",
-                    activo ? "bg-[#eef4f8]" : "bg-transparent hover:bg-[#f0f5f9]"
+                    activo ? "bg-superficie-suave" : "bg-transparent hover:bg-superficie-suave"
                   )}
                 >
                   <DotEstado estado={m.estado} />
@@ -78,10 +78,10 @@ export function RailModulos({
                       className={cn(
                         "font-mono text-[10.5px] tracking-[0.06em]",
                         activo
-                          ? "text-andritz"
+                          ? "text-acento"
                           : programada
-                            ? "text-[#8ca0af]"
-                            : "text-[#6a7f8e]"
+                            ? "text-[#8ca0af] dark:text-ink-suave/70"
+                            : "text-[#6a7f8e] dark:text-ink-suave"
                       )}
                     >
                       {String(m.numero).padStart(2, "0")} · {ESTADO_LABEL[m.estado]}
@@ -90,10 +90,10 @@ export function RailModulos({
                       className={cn(
                         "font-display text-[13.5px] font-semibold leading-tight",
                         activo
-                          ? "text-andritz"
+                          ? "text-acento"
                           : programada
-                            ? "text-[#5a6e7c]"
-                            : "text-tinta"
+                            ? "text-[#5a6e7c] dark:text-ink-suave"
+                            : "text-ink"
                       )}
                     >
                       {m.titulo}
@@ -106,7 +106,7 @@ export function RailModulos({
           })}
         </ul>
 
-        <div className="mx-1.5 mb-2.5 mt-3 h-px bg-[#e7edf1]" />
+        <div className="mx-1.5 mb-2.5 mt-3 h-px bg-borde" />
         <ul className="flex flex-wrap gap-3 px-2 pb-1.5">
           <LeyendaItem>
             <span className="h-2.5 w-2.5 rounded-full bg-andritz" aria-hidden />
@@ -121,7 +121,7 @@ export function RailModulos({
           </LeyendaItem>
           <LeyendaItem>
             <span
-              className="h-2.5 w-2.5 rounded-full border-[1.5px] border-[#c4d0d9]"
+              className="h-2.5 w-2.5 rounded-full border-[1.5px] border-borde"
               aria-hidden
             />
             Programada
@@ -134,7 +134,7 @@ export function RailModulos({
 
 function LeyendaItem({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex items-center gap-1.5 font-mono text-[10.5px] text-[#6a7f8e]">
+    <li className="flex items-center gap-1.5 font-mono text-[10.5px] text-[#6a7f8e] dark:text-ink-suave">
       {children}
     </li>
   );
@@ -157,7 +157,7 @@ function DotEstado({ estado }: { estado: EstadoSesion }) {
       <span
         className={cn(
           base,
-          "border-2 border-andritz bg-white animate-[pulso-nodo-claro_2.6s_ease-in-out_infinite]"
+          "border-2 border-andritz bg-superficie-alta animate-[pulso-nodo-claro_2.6s_ease-in-out_infinite]"
         )}
         aria-hidden
       >
@@ -165,5 +165,5 @@ function DotEstado({ estado }: { estado: EstadoSesion }) {
       </span>
     );
   }
-  return <span className={cn(base, "border-2 border-[#c4d0d9] bg-hueso")} aria-hidden />;
+  return <span className={cn(base, "border-2 border-borde bg-superficie-suave")} aria-hidden />;
 }

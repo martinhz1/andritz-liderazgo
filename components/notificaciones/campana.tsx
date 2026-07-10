@@ -36,7 +36,7 @@ export function Campana({ notificaciones }: { notificaciones: Notificaciones }) 
         onClick={() => setAbierta((o) => !o)}
         aria-label={total ? `Notificaciones: ${total} sin leer` : "Notificaciones"}
         aria-expanded={abierta}
-        className="relative flex h-10 w-10 items-center justify-center rounded-[10px] border border-linea bg-white text-tinta-suave transition-colors hover:border-andritz hover:text-andritz"
+        className="relative flex h-10 w-10 items-center justify-center rounded-[10px] border border-borde bg-superficie-alta text-ink-suave transition-colors hover:border-andritz hover:text-acento"
       >
         <Bell className="h-4 w-4" aria-hidden />
         {total > 0 && (
@@ -58,16 +58,16 @@ export function Campana({ notificaciones }: { notificaciones: Notificaciones }) 
           <div
             role="dialog"
             aria-label="Notificaciones"
-            className="absolute right-0 z-50 mt-2 w-[min(92vw,360px)] rounded-2xl border border-linea bg-white p-2 shadow-[0_24px_60px_-30px_rgba(12,42,62,0.6)]"
+            className="absolute right-0 z-50 mt-2 w-[min(92vw,360px)] rounded-2xl border border-borde bg-superficie-alta p-2 shadow-[0_24px_60px_-30px_rgba(12,42,62,0.6)]"
           >
             <div className="flex items-center justify-between px-2 py-1.5">
-              <p className="eyebrow text-tinta-suave">Notificaciones</p>
+              <p className="eyebrow text-ink-suave">Notificaciones</p>
               {total > 0 && (
                 <button
                   type="button"
                   onClick={marcarLeido}
                   disabled={pending}
-                  className="font-mono text-[11px] text-andritz transition-colors hover:text-andritz-oscuro disabled:opacity-60"
+                  className="font-mono text-[11px] text-acento transition-colors hover:text-andritz-oscuro disabled:opacity-60"
                 >
                   Marcar todo como leído
                 </button>
@@ -75,7 +75,7 @@ export function Campana({ notificaciones }: { notificaciones: Notificaciones }) 
             </div>
 
             {total === 0 ? (
-              <p className="px-2 py-8 text-center text-sm text-tinta-suave">
+              <p className="px-2 py-8 text-center text-sm text-ink-suave">
                 Estás al día.
               </p>
             ) : (
@@ -122,7 +122,7 @@ export function Campana({ notificaciones }: { notificaciones: Notificaciones }) 
 function Grupo({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
     <div className="mt-1">
-      <p className="px-2 pb-1 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-tinta-suave/70">
+      <p className="px-2 pb-1 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-ink-suave/70">
         {titulo}
       </p>
       <ul>{children}</ul>
@@ -146,10 +146,10 @@ function ItemLink({
       <Link
         href={href}
         onClick={onNavegar}
-        className="block rounded-lg px-2 py-2 transition-colors hover:bg-hueso"
+        className="block rounded-lg px-2 py-2 transition-colors hover:bg-superficie-suave"
       >
-        <p className="line-clamp-1 text-sm font-medium text-tinta">{principal}</p>
-        <p className="mt-0.5 font-mono text-[11px] text-tinta-suave">{meta}</p>
+        <p className="line-clamp-1 text-sm font-medium text-ink">{principal}</p>
+        <p className="mt-0.5 font-mono text-[11px] text-ink-suave">{meta}</p>
       </Link>
     </li>
   );

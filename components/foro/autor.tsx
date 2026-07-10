@@ -20,10 +20,10 @@ export function Autor({
       </span>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span className="text-sm font-semibold text-tinta">{autor.nombre}</span>
+          <span className="text-sm font-semibold text-ink">{autor.nombre}</span>
           {autor.esCoordinador && <BadgeCoordinador />}
         </div>
-        <p className="font-mono text-[11px] text-tinta-suave">
+        <p className="font-mono text-[11px] text-ink-suave">
           {tiempoRelativo(fecha)}
           {editado ? " · editado" : ""}
         </p>

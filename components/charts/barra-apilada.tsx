@@ -32,7 +32,7 @@ export function BarraApilada({
 
   return (
     <div
-      className="relative h-6 w-full overflow-hidden rounded-md bg-hueso"
+      className="relative h-6 w-full overflow-hidden rounded-md bg-superficie-suave"
       role="img"
       aria-label={`Favorable ${favorable}%, neutral ${neutral}%, desfavorable ${desfavorable}%`}
     >
@@ -44,7 +44,7 @@ export function BarraApilada({
       {limites.map((x) => (
         <span
           key={x}
-          className="absolute inset-y-0 w-[2px] -translate-x-1/2 bg-hueso"
+          className="absolute inset-y-0 w-[2px] -translate-x-1/2 bg-superficie-suave"
           style={{ left: `${x}%` }}
           aria-hidden
         />

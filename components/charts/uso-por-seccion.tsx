@@ -8,6 +8,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useTema } from "@/components/tema/tema-provider";
+import { coloresGrafico } from "@/lib/colores-grafico";
 
 // Visitas por sección (recorrido). Barra horizontal, paleta de datos Adapsys.
 export function UsoPorSeccion({
@@ -16,6 +18,7 @@ export function UsoPorSeccion({
   datos: { seccion: string; n: number }[];
 }) {
   const alto = datos.length * 40 + 16;
+  const c = coloresGrafico(useTema().tema);
   return (
     <div style={{ width: "100%", height: alto }}>
       <ResponsiveContainer>
@@ -30,7 +33,7 @@ export function UsoPorSeccion({
             type="category"
             dataKey="seccion"
             width={92}
-            tick={{ fill: "#0C2A3E", fontSize: 12 }}
+            tick={{ fill: c.etiqueta, fontSize: 12 }}
             axisLine={false}
             tickLine={false}
           />
@@ -39,7 +42,7 @@ export function UsoPorSeccion({
               dataKey="n"
               position="right"
               style={{
-                fill: "#0C2A3E",
+                fill: c.etiqueta,
                 fontSize: 12,
                 fontWeight: 600,
                 fontFamily: "IBM Plex Mono",

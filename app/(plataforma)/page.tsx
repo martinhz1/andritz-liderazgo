@@ -102,25 +102,25 @@ export default async function InicioPage() {
         {proxima && moduloProximo && (
           <section
             aria-labelledby="proxima-titulo"
-            className={`rounded-xl border border-linea bg-white p-7 shadow-[0_18px_44px_-30px_rgba(12,42,62,0.4)] ${surgir("0.3s")}`}
+            className={`rounded-xl border border-borde bg-superficie-alta p-7 shadow-[0_18px_44px_-30px_rgba(12,42,62,0.4)] ${surgir("0.3s")}`}
           >
             <div className="flex flex-wrap items-center gap-3">
-              <p id="proxima-titulo" className="eyebrow text-andritz">
+              <p id="proxima-titulo" className="eyebrow text-acento">
                 Próxima sesión
               </p>
               <Badge variant="outline">{fechaProxima}</Badge>
             </div>
 
             <h2 className="mt-4 font-display text-3xl font-bold tracking-tight">
-              <span className="font-mono text-xl font-medium text-tinta-suave">
+              <span className="font-mono text-xl font-medium text-ink-suave">
                 {String(moduloProximo.numero).padStart(2, "0")} ·{" "}
               </span>
               {moduloProximo.titulo}
             </h2>
-            <p className="mt-4 border-l-[3px] border-andritz pl-4 text-lg italic leading-snug text-tinta-suave">
+            <p className="mt-4 border-l-[3px] border-andritz pl-4 text-lg italic leading-snug text-ink-suave">
               “{moduloProximo.preguntaGuia}”
             </p>
-            <p className="mt-4 font-mono text-xs text-tinta-suave">
+            <p className="mt-4 font-mono text-xs text-ink-suave">
               Lugar: {proxima.lugar}
             </p>
 
@@ -137,7 +137,7 @@ export default async function InicioPage() {
               ))}
               <Link
                 href="/repositorio?modulo=m1"
-                className="flex items-center justify-between gap-3 rounded-lg border border-linea bg-white px-4.5 py-3 text-sm font-medium text-tinta transition-colors hover:border-andritz hover:text-andritz"
+                className="flex items-center justify-between gap-3 rounded-lg border border-borde bg-superficie-alta px-4.5 py-3 text-sm font-medium text-ink transition-colors hover:border-andritz hover:text-acento"
               >
                 Material del Módulo 1
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
@@ -149,17 +149,19 @@ export default async function InicioPage() {
         {/* La Gran Oportunidad — Estado B, desde el informe M1 */}
         <section
           aria-labelledby="oportunidad-titulo"
-          className={`flex flex-col rounded-xl border border-linea bg-white p-7 shadow-[0_18px_44px_-30px_rgba(12,42,62,0.4)] ${surgir("0.4s")}`}
+          className={`flex flex-col rounded-xl border border-borde bg-superficie-alta p-7 shadow-[0_18px_44px_-30px_rgba(12,42,62,0.4)] ${surgir("0.4s")}`}
         >
-          <p className="eyebrow text-teal-ad">B · La gran oportunidad</p>
+          <p className="eyebrow text-teal-ad dark:text-[#5fc7cf]">
+            B · La gran oportunidad
+          </p>
           <h2
             id="oportunidad-titulo"
-            className="mt-3.5 font-display text-[22px] font-bold leading-snug text-tinta"
+            className="mt-3.5 font-display text-[22px] font-bold leading-snug text-ink"
           >
             Posicionar a ANDRITZ Separation como socio estratégico de la minería.
           </h2>
           {cuerpoOportunidad && (
-            <p className="mt-3 line-clamp-4 text-[14.5px] leading-relaxed text-tinta-suave">
+            <p className="mt-3 line-clamp-4 text-[14.5px] leading-relaxed text-ink-suave">
               {cuerpoOportunidad}
             </p>
           )}
@@ -167,7 +169,7 @@ export default async function InicioPage() {
             {CHIPS_OPORTUNIDAD.map((chip) => (
               <span
                 key={chip}
-                className="rounded-full border border-[#b9dee0] bg-[#f0f8f8] px-3 py-1.5 font-mono text-[11px] text-teal-ad"
+                className="rounded-full border border-[#b9dee0] bg-[#f0f8f8] px-3 py-1.5 font-mono text-[11px] text-teal-ad dark:border-teal-ad/40 dark:bg-teal-ad/15 dark:text-[#5fc7cf]"
               >
                 {chip}
               </span>
@@ -178,21 +180,21 @@ export default async function InicioPage() {
 
       {/* ── Accesos a secciones ── */}
       <section aria-label="Secciones de la plataforma" className="mt-8">
-        <p className="eyebrow mb-4.5 text-tinta-suave">Explora la plataforma</p>
+        <p className="eyebrow mb-4.5 text-ink-suave">Explora la plataforma</p>
         <ul className="grid gap-4.5 sm:grid-cols-3">
           {ACCESOS.map(({ href, icono: Icono, titulo, texto }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="group flex h-full flex-col rounded-xl border border-linea bg-white p-6 shadow-[0_12px_30px_-26px_rgba(12,42,62,0.5)] transition hover:-translate-y-[3px] hover:border-andritz"
+                className="group flex h-full flex-col rounded-xl border border-borde bg-superficie-alta p-6 shadow-[0_12px_30px_-26px_rgba(12,42,62,0.5)] transition hover:-translate-y-[3px] hover:border-andritz"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-[#eef4f8] text-andritz">
+                <span className="flex h-11 w-11 items-center justify-center rounded-[10px] bg-superficie-suave text-acento">
                   <Icono className="h-[22px] w-[22px]" strokeWidth={1.8} aria-hidden />
                 </span>
-                <h3 className="mt-4.5 font-display text-[17px] font-semibold text-tinta group-hover:text-andritz">
+                <h3 className="mt-4.5 font-display text-[17px] font-semibold text-ink group-hover:text-acento">
                   {titulo}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-tinta-suave">
+                <p className="mt-2 text-sm leading-relaxed text-ink-suave">
                   {texto}
                 </p>
               </Link>

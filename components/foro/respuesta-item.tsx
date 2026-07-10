@@ -8,7 +8,7 @@ import { editarRespuesta, eliminarRespuesta } from "@/app/(plataforma)/foro/acti
 import type { RespuestaForo } from "@/lib/foro";
 
 const BTN =
-  "rounded-md p-1.5 text-tinta-suave transition-colors hover:bg-hueso hover:text-tinta disabled:opacity-50";
+  "rounded-md p-1.5 text-ink-suave transition-colors hover:bg-superficie-suave hover:text-ink disabled:opacity-50";
 
 export function RespuestaItem({
   respuesta,
@@ -43,7 +43,7 @@ export function RespuestaItem({
   }
 
   return (
-    <li className="border-t border-linea/70 py-4 first:border-t-0">
+    <li className="border-t border-borde/70 py-4 first:border-t-0">
       <div className="flex items-start justify-between gap-3">
         <Autor
           autor={respuesta.autor}
@@ -84,7 +84,7 @@ export function RespuestaItem({
             onChange={(e) => setCuerpo(e.target.value)}
             rows={3}
             maxLength={5000}
-            className="w-full resize-y rounded-lg border border-linea bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
+            className="w-full resize-y rounded-lg border border-borde bg-superficie-alta px-3.5 py-2.5 text-sm text-ink outline-none transition-shadow focus:border-andritz focus:ring-2 focus:ring-andritz/15"
           />
           {error && (
             <p role="alert" className="text-sm text-magenta-ad">
@@ -99,7 +99,7 @@ export function RespuestaItem({
                 setCuerpo(respuesta.cuerpo);
                 setError(null);
               }}
-              className="rounded-lg border border-linea bg-white px-3.5 py-2 text-sm font-medium text-tinta-suave transition-colors hover:border-andritz hover:text-andritz"
+              className="rounded-lg border border-borde bg-superficie-alta px-3.5 py-2 text-sm font-medium text-ink-suave transition-colors hover:border-andritz hover:text-acento"
             >
               Cancelar
             </button>
@@ -114,7 +114,7 @@ export function RespuestaItem({
           </div>
         </div>
       ) : (
-        <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-tinta">
+        <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-ink">
           {respuesta.cuerpo}
         </p>
       )}
