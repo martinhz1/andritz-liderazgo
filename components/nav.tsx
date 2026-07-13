@@ -13,7 +13,7 @@ import type { Notificaciones } from "@/lib/notificaciones";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
-  { href: "/repositorio", label: "Repositorio" },
+  { href: "/repositorio", label: "Materiales" },
   { href: "/calendario", label: "Calendario" },
   { href: "/foro", label: "Foro" },
   { href: "/registros", label: "Registros" },
@@ -103,14 +103,23 @@ export function Nav({
           {rol === "admin" && <MenuAdmin pathname={pathname} />}
           <TemaToggle />
           <Campana notificaciones={notificaciones} />
-          <div className="flex items-center gap-2.5 rounded-full border border-borde bg-superficie-suave p-1 pr-1.5">
+          <Link
+            href="/cuenta"
+            aria-label="Mi cuenta"
+            aria-current={pathname === "/cuenta" ? "page" : undefined}
+            title="Mi cuenta"
+            className={cn(
+              "flex items-center gap-2.5 rounded-full border bg-superficie-suave p-1 pr-1.5 transition-colors hover:border-andritz",
+              pathname === "/cuenta" ? "border-andritz" : "border-borde"
+            )}
+          >
             <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[linear-gradient(140deg,#006caf,#0c2a3e)] font-display text-xs font-bold tracking-wide text-white">
               {iniciales(nombre)}
             </span>
             <span className="hidden text-[13px] font-medium text-ink sm:block">
               {nombre}
             </span>
-          </div>
+          </Link>
           <button
             onClick={cerrarSesion}
             aria-label="Cerrar sesión"

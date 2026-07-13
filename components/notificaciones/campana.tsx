@@ -98,7 +98,7 @@ export function Campana({ notificaciones }: { notificaciones: Notificaciones }) 
                   </Grupo>
                 )}
                 {repositorio.length > 0 && (
-                  <Grupo titulo="Repositorio">
+                  <Grupo titulo="Materiales">
                     {repositorio.map((n) => (
                       <ItemLink
                         key={n.slug}

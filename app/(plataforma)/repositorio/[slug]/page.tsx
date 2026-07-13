@@ -43,7 +43,7 @@ export default async function MaterialPage({
         className="inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-wide text-ink-suave transition-colors hover:text-acento"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-        Repositorio
+        Materiales
       </Link>
 
       <header className="mt-6 border-b border-borde pb-6">

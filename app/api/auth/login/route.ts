@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { USERS } from "@/data/users";
 import { COOKIE_SESION, crearToken } from "@/lib/session";
 import { verifyPassword } from "@/lib/password";
+import { getHashOverride } from "@/lib/credenciales";
 import { registrarEvento } from "@/lib/metricas";
 
 export async function POST(req: NextRequest) {
@@ -23,7 +24,13 @@ export async function POST(req: NextRequest) {
     .replace(/-{2,}/g, "-")
     .replace(/^-+|-+$/g, "");
   const user = USERS.find((u) => u.usuario === usuarioNorm);
-  const valido = user ? await verifyPassword(password ?? "", user.hash) : false;
+  // Si el usuario cambió su contraseña, el hash vigente vive en Neon; si no,
+  // se usa el hash inicial de data/users.ts.
+  let valido = false;
+  if (user) {
+    const hashVigente = (await getHashOverride(user.usuario)) ?? user.hash;
+    valido = await verifyPassword(password ?? "", hashVigente);
+  }
 
   if (!user || !valido) {
     return NextResponse.json(

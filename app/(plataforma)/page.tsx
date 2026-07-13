@@ -20,7 +20,7 @@ const ACCESOS = [
   {
     href: "/repositorio",
     icono: FolderOpen,
-    titulo: "Repositorio de material",
+    titulo: "Materiales",
     texto:
       "Definiciones, informes de sesión, lecturas y tareas, organizados por módulo.",
   },

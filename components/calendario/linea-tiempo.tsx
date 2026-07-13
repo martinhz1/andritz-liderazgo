@@ -370,7 +370,7 @@ function PanelDetalle({
               href={s.materialHref}
               className="flex items-center justify-between gap-3 rounded-lg border border-borde bg-superficie-alta px-4 py-3 text-sm font-medium text-ink transition-colors hover:border-andritz hover:text-acento"
             >
-              Material del módulo en el Repositorio
+              Material del módulo
               <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
             </Link>
             {s.tareaHref && (

@@ -79,6 +79,17 @@ export const vistasSeccion = pgTable("vistas_seccion", {
   repoVistoEn: timestamp("repo_visto_en", { withTimezone: true }),
 });
 
+// Contraseñas cambiadas por el usuario. data/users.ts trae el hash inicial,
+// pero el FS es de solo lectura en producción: al cambiar la contraseña se
+// guarda el nuevo hash aquí y el login lo prioriza sobre el estático.
+export const credenciales = pgTable("credenciales", {
+  usuario: text("usuario").primaryKey(),
+  hash: text("hash").notNull(),
+  actualizadoEn: timestamp("actualizado_en", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
 // Eventos de uso para el dashboard de adopción (solo admins). tipo: "login"
 // (inicio de sesión) o "vista" (visita a una ruta; `ruta` guarda el pathname).
 export const eventos = pgTable(
