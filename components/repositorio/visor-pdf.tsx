@@ -7,18 +7,24 @@ import { Download, MonitorPlay } from "lucide-react";
 export function VisorPdf({
   src,
   titulo,
-  laminas,
+  etiqueta = "Documento",
+  paginas,
+  unidad = "páginas",
 }: {
   src: string;
   titulo: string;
-  laminas?: number;
+  /** Etiqueta del visor (p. ej. "Presentación" o "Lectura"). */
+  etiqueta?: string;
+  paginas?: number;
+  /** Sustantivo de la unidad de conteo (p. ej. "láminas" o "páginas"). */
+  unidad?: string;
 }) {
   return (
     <figure className="overflow-hidden rounded-2xl border border-borde bg-superficie-alta shadow-[0_12px_30px_-26px_rgba(12,42,62,0.5)]">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-borde px-4 py-3">
         <span className="flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-suave">
           <MonitorPlay className="h-4 w-4 text-acento" strokeWidth={1.9} aria-hidden />
-          Presentación{laminas ? ` · ${laminas} láminas` : ""}
+          {etiqueta}{paginas ? ` · ${paginas} ${unidad}` : ""}
         </span>
         <a
           href={src}

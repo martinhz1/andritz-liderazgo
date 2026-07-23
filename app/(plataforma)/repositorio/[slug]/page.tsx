@@ -35,7 +35,9 @@ export default async function MaterialPage({
     getModulo(material.moduloId),
     getModulos(),
   ]);
-  const esLectura = material.tipo === "lecturas";
+  // Las lecturas de solo texto usan el ancho de lectura; las que traen PDF
+  // embebido usan el layout ancho para dar espacio al visor.
+  const esLectura = material.tipo === "lecturas" && !material.pdf;
 
   return (
     <article className={cn(esLectura ? "mx-auto max-w-3xl" : "max-w-4xl")}>
@@ -73,7 +75,9 @@ export default async function MaterialPage({
           <VisorPdf
             src={material.pdf.src}
             titulo={material.titulo}
-            laminas={material.pdf.laminas}
+            etiqueta={ETIQUETA_TIPO[material.tipo]}
+            paginas={material.pdf.paginas}
+            unidad={material.tipo === "presentacion" ? "láminas" : "páginas"}
           />
         </div>
       )}

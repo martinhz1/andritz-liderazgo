@@ -49,8 +49,6 @@ export default async function RegistrosPage() {
           );
         })}
       </div>
-
-      {/* TODO: subir las fotos reales a /public/registros/m1/ y actualizar data/registros.ts */}
     </div>
   );
 }

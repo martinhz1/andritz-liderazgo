@@ -203,8 +203,8 @@ function TarjetaMaterial({
 }) {
   const Icono = ICONO_TIPO[material.tipo];
   const nSecciones = material.secciones.length;
-  const esPresentacion = material.tipo === "presentacion";
-  const laminas = material.pdf?.laminas;
+  const paginas = material.pdf?.paginas;
+  const unidadPdf = material.tipo === "presentacion" ? "láminas" : "páginas";
   return (
     <Link
       href={`/repositorio/${material.slug}`}
@@ -229,10 +229,10 @@ function TarjetaMaterial({
       </p>
       <div className="mt-4.5 flex items-center justify-between gap-3 border-t border-borde pt-4">
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-[#6a7f8e] dark:text-ink-suave">
-          {esPresentacion ? (
+          {material.pdf ? (
             <>
               <MonitorPlay className="h-[13px] w-[13px]" strokeWidth={1.9} aria-hidden />
-              {laminas ? `${laminas} láminas` : "PDF"}
+              {paginas ? `${paginas} ${unidadPdf}` : "PDF"}
             </>
           ) : (
             <>

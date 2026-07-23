@@ -218,7 +218,60 @@ export const MATERIALES: Material[] = [
       "Las láminas de la jornada: la ruta de los talleres, el diagnóstico (Estado A), La Gran Oportunidad y las definiciones estratégicas del programa.",
     pdf: {
       src: "/materiales/m1/presentacion-modulo-1.pdf",
-      laminas: 22,
+      paginas: 22,
+    },
+    secciones: [],
+  },
+
+  // ────────────────────────────────────────────────────────────────
+  // Módulo 2 · Presentación
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m2-presentacion",
+    slug: "presentacion-modulo-2",
+    publicadoEn: "2026-07-23",
+    moduloId: "m2",
+    tipo: "presentacion",
+    titulo: "Presentación — Módulo 2: Guiar al Equipo",
+    resumen:
+      "Las láminas de la jornada: problema técnico vs. adaptativo, el proceso de cambio y las pérdidas, y las claves para sostener conversaciones desafiantes y movilizadoras.",
+    pdf: {
+      src: "/materiales/m2/presentacion-modulo-2.pdf",
+      paginas: 40,
+    },
+    secciones: [],
+  },
+
+  // ────────────────────────────────────────────────────────────────
+  // Módulo 2 · Lecturas
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m2-lectura-supervivencia",
+    slug: "manual-supervivencia-lideres",
+    publicadoEn: "2026-07-23",
+    moduloId: "m2",
+    tipo: "lecturas",
+    titulo: "Manual de supervivencia para líderes",
+    resumen:
+      "Heifetz y Linsky sobre cómo sostenerse liderando el cambio adaptativo: subir al balcón, gestionar la temperatura del conflicto, situar el trabajo donde corresponde y cuidar los peligros internos.",
+    pdf: {
+      src: "/materiales/m2/lectura-manual-supervivencia-lideres.pdf",
+      paginas: 14,
+    },
+    secciones: [],
+  },
+  {
+    id: "mat-m2-lectura-conversaciones",
+    slug: "conversaciones-dificiles",
+    publicadoEn: "2026-07-23",
+    moduloId: "m2",
+    tipo: "lecturas",
+    titulo: "Conversaciones difíciles",
+    resumen:
+      "Stone, Patton y Heen: toda conversación difícil son en realidad tres —los hechos, los sentimientos y la identidad— y manejarlas bien parte por reconocer esa estructura.",
+    pdf: {
+      src: "/materiales/m2/lectura-conversaciones-dificiles.pdf",
+      paginas: 6,
     },
     secciones: [],
   },
@@ -314,6 +367,37 @@ export const MATERIALES: Material[] = [
               "Publicar todos los resultados",
             ],
           },
+        ],
+      },
+    ],
+  },
+
+  // ────────────────────────────────────────────────────────────────
+  // Módulo 3 · Tareas (desafío entre módulos, previo al Módulo 3)
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m3-desafio",
+    slug: "desafio-conversacion-desafiante",
+    publicadoEn: "2026-07-23",
+    moduloId: "m3",
+    tipo: "tareas",
+    titulo: "Tarea: Desafío personal entre módulos",
+    resumen:
+      "Antes del Módulo 3: identifica una conversación que anticipas desafiante y prepárala con lo revisado en la sesión —propósito, balcón de ti mismo y la mirada del otro— para que genere progreso.",
+    secciones: [
+      {
+        titulo: "El desafío",
+        parrafos: [
+          "Identifica a alguien con quien debas tener una conversación que anticipas desafiante o compleja. Con lo revisado en la sesión, prepárala antes de sostenerla.",
+        ],
+      },
+      {
+        titulo: "Cómo preparar la conversación",
+        lista: [
+          "Propósito de abrir la conversación: ¿para qué quieres tenerla y qué progreso buscas?",
+          "Balcón de ti mismo: tu mirada, tus supuestos, tu emoción y tu parte de responsabilidad.",
+          "Cómo se posiciona el otro: su interés, su posición y su emoción frente al tema.",
+          "¿Qué debieras tener en consideración para que esta conversación genere progreso?",
         ],
       },
     ],

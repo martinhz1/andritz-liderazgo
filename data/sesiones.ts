@@ -35,7 +35,7 @@ export const SESIONES: Sesion[] = [
     horario: "09:00 – 13:00",
     lugar: "SAN Room Management",
     direccion: "Avenida Andrés Bello 2777, Piso 11",
-    estado: "proxima",
+    estado: "realizada",
   },
   {
     id: "s3",
@@ -52,7 +52,7 @@ export const SESIONES: Sesion[] = [
     horario: "09:00 – 13:00",
     lugar: "SAN Room Management",
     direccion: "Avenida Andrés Bello 2777, Piso 11",
-    estado: "programada",
+    estado: "proxima",
   },
   {
     id: "s4",

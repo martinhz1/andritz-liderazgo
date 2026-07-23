@@ -33,12 +33,12 @@ export interface SeccionMaterial {
   destacado?: string;
 }
 
-/** Documento PDF embebido en un material (p. ej. la presentación de la sesión). */
+/** Documento PDF embebido en un material (presentación de la sesión o lectura). */
 export interface PdfAdjunto {
   /** Ruta pública, p. ej. "/materiales/m1/presentacion-modulo-1.pdf". */
   src: string;
-  /** Cantidad de láminas, para la meta de la tarjeta (opcional). */
-  laminas?: number;
+  /** Cantidad de páginas del PDF, para la meta de la tarjeta (opcional). */
+  paginas?: number;
 }
 
 export interface Material {
