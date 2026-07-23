@@ -10,6 +10,7 @@ import {
   FileText,
   List,
   ListChecks,
+  MonitorPlay,
   Search,
   type LucideIcon,
 } from "lucide-react";
@@ -30,7 +31,7 @@ const CATEGORIAS: { valor: Categoria; label: string; tipos: TipoMaterial[] }[] =
   {
     valor: "sesion",
     label: "Material de sesión",
-    tipos: ["definiciones", "informe", "lecturas"],
+    tipos: ["definiciones", "informe", "lecturas", "presentacion"],
   },
   { valor: "tareas", label: "Tareas", tipos: ["tareas"] },
 ];
@@ -40,6 +41,7 @@ const ETIQUETA_TIPO: Record<TipoMaterial, string> = {
   informe: "Informe de sesión",
   lecturas: "Lectura",
   tareas: "Tarea",
+  presentacion: "Presentación",
 };
 
 const ICONO_TIPO: Record<TipoMaterial, LucideIcon> = {
@@ -47,6 +49,7 @@ const ICONO_TIPO: Record<TipoMaterial, LucideIcon> = {
   informe: FileText,
   lecturas: BookOpen,
   tareas: ListChecks,
+  presentacion: MonitorPlay,
 };
 
 export function RepositorioResultados({
@@ -200,6 +203,8 @@ function TarjetaMaterial({
 }) {
   const Icono = ICONO_TIPO[material.tipo];
   const nSecciones = material.secciones.length;
+  const esPresentacion = material.tipo === "presentacion";
+  const laminas = material.pdf?.laminas;
   return (
     <Link
       href={`/repositorio/${material.slug}`}
@@ -224,8 +229,17 @@ function TarjetaMaterial({
       </p>
       <div className="mt-4.5 flex items-center justify-between gap-3 border-t border-borde pt-4">
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-[#6a7f8e] dark:text-ink-suave">
-          <List className="h-[13px] w-[13px]" strokeWidth={1.9} aria-hidden />
-          {nSecciones} {nSecciones === 1 ? "sección" : "secciones"}
+          {esPresentacion ? (
+            <>
+              <MonitorPlay className="h-[13px] w-[13px]" strokeWidth={1.9} aria-hidden />
+              {laminas ? `${laminas} láminas` : "PDF"}
+            </>
+          ) : (
+            <>
+              <List className="h-[13px] w-[13px]" strokeWidth={1.9} aria-hidden />
+              {nSecciones} {nSecciones === 1 ? "sección" : "secciones"}
+            </>
+          )}
         </span>
         <span className="flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-wide text-acento">
           Abrir

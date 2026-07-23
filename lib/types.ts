@@ -12,7 +12,12 @@ export interface Modulo {
   preguntaGuia: string;
 }
 
-export type TipoMaterial = "definiciones" | "informe" | "lecturas" | "tareas";
+export type TipoMaterial =
+  | "definiciones"
+  | "informe"
+  | "lecturas"
+  | "tareas"
+  | "presentacion";
 
 export interface ColumnaEjercicio {
   titulo: string;
@@ -28,6 +33,14 @@ export interface SeccionMaterial {
   destacado?: string;
 }
 
+/** Documento PDF embebido en un material (p. ej. la presentación de la sesión). */
+export interface PdfAdjunto {
+  /** Ruta pública, p. ej. "/materiales/m1/presentacion-modulo-1.pdf". */
+  src: string;
+  /** Cantidad de láminas, para la meta de la tarjeta (opcional). */
+  laminas?: number;
+}
+
 export interface Material {
   id: string;
   slug: string;
@@ -38,6 +51,8 @@ export interface Material {
   /** Fecha de publicación (ISO, p. ej. "2026-07-02"). Base de las notificaciones. */
   publicadoEn: string;
   secciones: SeccionMaterial[];
+  /** PDF embebido (materiales tipo "presentacion"). */
+  pdf?: PdfAdjunto;
 }
 
 export interface FechaSesion {

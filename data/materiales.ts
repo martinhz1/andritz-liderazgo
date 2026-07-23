@@ -205,6 +205,25 @@ export const MATERIALES: Material[] = [
   },
 
   // ────────────────────────────────────────────────────────────────
+  // Módulo 1 · Presentación
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m1-presentacion",
+    slug: "presentacion-modulo-1",
+    publicadoEn: "2026-07-02",
+    moduloId: "m1",
+    tipo: "presentacion",
+    titulo: "Presentación — Módulo 1: Liderar el Negocio",
+    resumen:
+      "Las láminas de la jornada: la ruta de los talleres, el diagnóstico (Estado A), La Gran Oportunidad y las definiciones estratégicas del programa.",
+    pdf: {
+      src: "/materiales/m1/presentacion-modulo-1.pdf",
+      laminas: 22,
+    },
+    secciones: [],
+  },
+
+  // ────────────────────────────────────────────────────────────────
   // Módulo 2 · Tareas
   // ────────────────────────────────────────────────────────────────
   {

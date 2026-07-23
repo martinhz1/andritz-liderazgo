@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { MiniRuta } from "@/components/ruta-ab";
 import { getMaterial, getMateriales, getModulo, getModulos } from "@/lib/content";
 import { MarcarVista } from "@/components/notificaciones/marcar-vista";
+import { VisorPdf } from "@/components/repositorio/visor-pdf";
 import type { TipoMaterial } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +14,7 @@ const ETIQUETA_TIPO: Record<TipoMaterial, string> = {
   informe: "Informe de sesión",
   lecturas: "Lectura",
   tareas: "Tarea",
+  presentacion: "Presentación",
 };
 
 export async function generateStaticParams() {
@@ -65,6 +67,16 @@ export default async function MaterialPage({
           </div>
         )}
       </header>
+
+      {material.pdf && (
+        <div className="mt-8">
+          <VisorPdf
+            src={material.pdf.src}
+            titulo={material.titulo}
+            laminas={material.pdf.laminas}
+          />
+        </div>
+      )}
 
       <div className={cn("mt-8 space-y-10", esLectura && "lectura")}>
         {material.secciones.map((sec, i) => (

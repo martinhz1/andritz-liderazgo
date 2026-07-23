@@ -156,6 +156,12 @@ export const USERS: Usuario[] = [
     nombre: "Sergio Pinto",
   },
   {
+    usuario: "vanessa-nava",
+    hash: "pbkdf2$120000$Ibl36u5gYtcL1YyzMZ3X0w$SfQIKpYTmVjd_B7_-h6j13ZefyQbNJmpJsZnBGGWg9Q",
+    rol: "participante",
+    nombre: "Vanessa Nava",
+  },
+  {
     usuario: "victor-calderon",
     hash: "pbkdf2$120000$uu42CV5WmY6pgKK_naRKVQ$mCLCA8eMqb0sAFXOWYlaSljlatNQ-oqikfLdIRk6itg",
     rol: "participante",
