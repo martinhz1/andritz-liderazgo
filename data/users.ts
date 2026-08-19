@@ -60,6 +60,12 @@ export const USERS: Usuario[] = [
     nombre: "Benjamín Olivares",
   },
   {
+    usuario: "bernardo-reyes",
+    hash: "pbkdf2$120000$Q33Q8SgoGZ6lzidJdDeaIw$Xb2k9XqAiWjPyeFyusrXn9tTQDSC9My54M3yN-lgEi4",
+    rol: "participante",
+    nombre: "Bernardo Reyes",
+  },
+  {
     usuario: "catalina-herrera",
     hash: "pbkdf2$120000$aFARvlC5v6siPrtXfqjaww$2-cBTvfKtLdAjGsRGulyYHlE4Qp_lOGXisNwX9m_Ekc",
     rol: "participante",
@@ -114,6 +120,12 @@ export const USERS: Usuario[] = [
     nombre: "Iván Cobián Lezama",
   },
   {
+    usuario: "jesus-sing",
+    hash: "pbkdf2$120000$Ir8hAKWH5WBX7xIHeiOT6w$THVgk5oohy2EYhYbLkezTHkQWfo_1o3X0ZGtYb8gFEk",
+    rol: "participante",
+    nombre: "Jesús Sing",
+  },
+  {
     usuario: "jorge-collado",
     hash: "pbkdf2$120000$IUQsIdu_7WN1CTMllTmGwQ$SuS730nwKGqRP4xZcFCLZlytLhY_30Ya25Ekl7dTGZk",
     rol: "participante",
@@ -130,6 +142,12 @@ export const USERS: Usuario[] = [
     hash: "pbkdf2$120000$FF-iuDpUoOhTCDq2UezKvw$Z5Y3p2dVRhSmeAvvNIbtLP3E4uqOZNag75xhDpDIkHU",
     rol: "participante",
     nombre: "Julio Mosaja",
+  },
+  {
+    usuario: "oscar-sanroman",
+    hash: "pbkdf2$120000$o6sM3Bx-9zkMMHiiX8RuRQ$Ft8c7gCrXooR968CvX8wyyUkGpvcp2l-TckBgNoDimA",
+    rol: "participante",
+    nombre: "Óscar San Román",
   },
   {
     usuario: "paulino-concha",
