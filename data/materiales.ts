@@ -410,6 +410,22 @@ export const MATERIALES: Material[] = [
     },
     secciones: [],
   },
+  {
+    id: "mat-m3-video-genz",
+    slug: "video-motivacion-gen-z",
+    publicadoEn: "2026-08-20",
+    moduloId: "m3",
+    tipo: "video",
+    titulo: "¿Qué motiva a la Gen Z?",
+    resumen:
+      "Qué mueve a las nuevas generaciones en el trabajo: un insumo para pensar cómo motivar, desarrollar y sostener el talento en el Módulo 3.",
+    video: {
+      src: "/materiales/m3/video-motivacion-gen-z.mp4",
+      tipoMime: "video/mp4",
+      duracion: "11 min",
+    },
+    secciones: [],
+  },
 
   // ────────────────────────────────────────────────────────────────
   // Módulo 3 · Tareas (desafío entre módulos, previo al Módulo 3)
