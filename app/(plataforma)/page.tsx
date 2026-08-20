@@ -51,6 +51,10 @@ export default async function InicioPage() {
   const tareasProximas = moduloProximo
     ? await getMateriales({ moduloId: moduloProximo.id, tipo: "tareas" })
     : [];
+  // Módulo inmediatamente anterior al próximo, para el acceso a su material.
+  const moduloAnterior = moduloProximo
+    ? modulos.find((m) => m.numero === moduloProximo.numero - 1)
+    : undefined;
 
   // La maqueta usa el "salto" de valor (párrafo 2) como cuerpo de la tarjeta;
   // cae al primero si el informe cambiara de estructura.
@@ -135,13 +139,15 @@ export default async function InicioPage() {
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </Link>
               ))}
-              <Link
-                href="/repositorio?modulo=m1"
-                className="flex items-center justify-between gap-3 rounded-lg border border-borde bg-superficie-alta px-4.5 py-3 text-sm font-medium text-ink transition-colors hover:border-andritz hover:text-acento"
-              >
-                Material del Módulo 1
-                <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-              </Link>
+              {moduloAnterior && (
+                <Link
+                  href={`/repositorio?modulo=${moduloAnterior.id}`}
+                  className="flex items-center justify-between gap-3 rounded-lg border border-borde bg-superficie-alta px-4.5 py-3 text-sm font-medium text-ink transition-colors hover:border-andritz hover:text-acento"
+                >
+                  Material del Módulo {moduloAnterior.numero}
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
+                </Link>
+              )}
             </div>
           </section>
         )}
