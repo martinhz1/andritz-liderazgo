@@ -373,6 +373,45 @@ export const MATERIALES: Material[] = [
   },
 
   // ────────────────────────────────────────────────────────────────
+  // Módulo 3 · Lecturas
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m3-lectura-critica",
+    slug: "pagar-por-ser-criticado",
+    publicadoEn: "2026-08-20",
+    moduloId: "m3",
+    tipo: "lecturas",
+    titulo: "Pagar por ser criticado",
+    resumen:
+      "Por qué no hay cambio sin feedback efectivo: cómo dar y recibir crítica que moviliza —tensionar sin presionar, reconocer lo positivo y hacerse cargo de una cultura de feedback.",
+    pdf: {
+      src: "/materiales/m3/lectura-pagar-por-ser-criticado.pdf",
+      paginas: 3,
+    },
+    secciones: [],
+  },
+
+  // ────────────────────────────────────────────────────────────────
+  // Módulo 3 · Video
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m3-video-guardiola",
+    slug: "video-pep-guardiola",
+    publicadoEn: "2026-08-20",
+    moduloId: "m3",
+    tipo: "video",
+    titulo: "Pep Guardiola y Fernando Trueba — Conversaciones sobre el futuro",
+    resumen:
+      "Una conversación en torno al liderazgo, el talento y las personas, para mirar el Módulo 3 —Cuidar a las Personas— desde otra vereda.",
+    video: {
+      src: "/materiales/m3/video-pep-guardiola.mp4",
+      tipoMime: "video/mp4",
+      duracion: "18 min",
+    },
+    secciones: [],
+  },
+
+  // ────────────────────────────────────────────────────────────────
   // Módulo 3 · Tareas (desafío entre módulos, previo al Módulo 3)
   // ────────────────────────────────────────────────────────────────
   {

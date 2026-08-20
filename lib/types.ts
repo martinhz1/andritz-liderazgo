@@ -17,7 +17,8 @@ export type TipoMaterial =
   | "informe"
   | "lecturas"
   | "tareas"
-  | "presentacion";
+  | "presentacion"
+  | "video";
 
 export interface ColumnaEjercicio {
   titulo: string;
@@ -41,6 +42,16 @@ export interface PdfAdjunto {
   paginas?: number;
 }
 
+/** Video embebido en un material (materiales tipo "video"). */
+export interface VideoAdjunto {
+  /** Ruta pública del video, p. ej. "/materiales/m3/video-pep-guardiola.mp4". */
+  src: string;
+  /** Tipo MIME del archivo (por defecto "video/mp4"). */
+  tipoMime?: string;
+  /** Duración legible, para la meta de la tarjeta (p. ej. "12 min", opcional). */
+  duracion?: string;
+}
+
 export interface Material {
   id: string;
   slug: string;
@@ -51,8 +62,10 @@ export interface Material {
   /** Fecha de publicación (ISO, p. ej. "2026-07-02"). Base de las notificaciones. */
   publicadoEn: string;
   secciones: SeccionMaterial[];
-  /** PDF embebido (materiales tipo "presentacion"). */
+  /** PDF embebido (materiales tipo "presentacion" o lecturas con visor). */
   pdf?: PdfAdjunto;
+  /** Video embebido (materiales tipo "video"). */
+  video?: VideoAdjunto;
 }
 
 export interface FechaSesion {

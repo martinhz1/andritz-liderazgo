@@ -11,6 +11,7 @@ import {
   List,
   ListChecks,
   MonitorPlay,
+  PlayCircle,
   Search,
   type LucideIcon,
 } from "lucide-react";
@@ -31,7 +32,7 @@ const CATEGORIAS: { valor: Categoria; label: string; tipos: TipoMaterial[] }[] =
   {
     valor: "sesion",
     label: "Material de sesión",
-    tipos: ["definiciones", "informe", "lecturas", "presentacion"],
+    tipos: ["definiciones", "informe", "lecturas", "presentacion", "video"],
   },
   { valor: "tareas", label: "Tareas", tipos: ["tareas"] },
 ];
@@ -42,6 +43,7 @@ const ETIQUETA_TIPO: Record<TipoMaterial, string> = {
   lecturas: "Lectura",
   tareas: "Tarea",
   presentacion: "Presentación",
+  video: "Video",
 };
 
 const ICONO_TIPO: Record<TipoMaterial, LucideIcon> = {
@@ -50,6 +52,7 @@ const ICONO_TIPO: Record<TipoMaterial, LucideIcon> = {
   lecturas: BookOpen,
   tareas: ListChecks,
   presentacion: MonitorPlay,
+  video: PlayCircle,
 };
 
 export function RepositorioResultados({
@@ -229,7 +232,12 @@ function TarjetaMaterial({
       </p>
       <div className="mt-4.5 flex items-center justify-between gap-3 border-t border-borde pt-4">
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-[#6a7f8e] dark:text-ink-suave">
-          {material.pdf ? (
+          {material.video ? (
+            <>
+              <PlayCircle className="h-[13px] w-[13px]" strokeWidth={1.9} aria-hidden />
+              {material.video.duracion ?? "Video"}
+            </>
+          ) : material.pdf ? (
             <>
               <MonitorPlay className="h-[13px] w-[13px]" strokeWidth={1.9} aria-hidden />
               {paginas ? `${paginas} ${unidadPdf}` : "PDF"}

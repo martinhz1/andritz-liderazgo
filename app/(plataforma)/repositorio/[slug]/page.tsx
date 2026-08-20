@@ -6,6 +6,7 @@ import { MiniRuta } from "@/components/ruta-ab";
 import { getMaterial, getMateriales, getModulo, getModulos } from "@/lib/content";
 import { MarcarVista } from "@/components/notificaciones/marcar-vista";
 import { VisorPdf } from "@/components/repositorio/visor-pdf";
+import { VisorVideo } from "@/components/repositorio/visor-video";
 import type { TipoMaterial } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +16,7 @@ const ETIQUETA_TIPO: Record<TipoMaterial, string> = {
   lecturas: "Lectura",
   tareas: "Tarea",
   presentacion: "Presentación",
+  video: "Video",
 };
 
 export async function generateStaticParams() {
@@ -78,6 +80,17 @@ export default async function MaterialPage({
             etiqueta={ETIQUETA_TIPO[material.tipo]}
             paginas={material.pdf.paginas}
             unidad={material.tipo === "presentacion" ? "láminas" : "páginas"}
+          />
+        </div>
+      )}
+
+      {material.video && (
+        <div className="mt-8">
+          <VisorVideo
+            src={material.video.src}
+            titulo={material.titulo}
+            tipoMime={material.video.tipoMime}
+            duracion={material.video.duracion}
           />
         </div>
       )}
