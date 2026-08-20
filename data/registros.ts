@@ -34,4 +34,16 @@ export const REGISTROS: RegistroGrafico[] = [
       { src: "/registros/m2/foto-14.jpeg", alt: "Cierre: el mapa de facciones frente al cambio" },
     ],
   },
+  {
+    sesionId: "s3",
+    titulo: "Jornada Módulo 3 · Cuidar a las Personas",
+    fotos: [
+      { src: "/registros/m3/foto-01.jpeg", alt: "Ejercicio en tríos: practicando la conversación" },
+      { src: "/registros/m3/foto-02.jpeg", alt: "Preparando la conversación en grupo" },
+      { src: "/registros/m3/foto-03.jpeg", alt: "Ensayo de una conversación movilizadora" },
+      { src: "/registros/m3/foto-04.jpeg", alt: "Conversación en duplas" },
+      { src: "/registros/m3/foto-05.jpeg", alt: "Trabajando con las cartas de motivadores" },
+      { src: "/registros/m3/foto-06.jpeg", alt: "El equipo con las cartas de motivadores" },
+    ],
+  },
 ];
