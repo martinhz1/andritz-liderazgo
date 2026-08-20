@@ -373,6 +373,25 @@ export const MATERIALES: Material[] = [
   },
 
   // ────────────────────────────────────────────────────────────────
+  // Módulo 3 · Presentación
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m3-presentacion",
+    slug: "presentacion-modulo-3",
+    publicadoEn: "2026-08-20",
+    moduloId: "m3",
+    tipo: "presentacion",
+    titulo: "Presentación — Módulo 3: Cuidar a las Personas",
+    resumen:
+      "Las láminas de la jornada: conversaciones desafiantes y movilizadoras (afirmaciones vs. juicios, preguntas que movilizan), el reconocimiento y el sesgo de lo negativo, y los motivadores que mueven a las personas.",
+    pdf: {
+      src: "/materiales/m3/presentacion-modulo-3.pdf",
+      paginas: 24,
+    },
+    secciones: [],
+  },
+
+  // ────────────────────────────────────────────────────────────────
   // Módulo 3 · Lecturas
   // ────────────────────────────────────────────────────────────────
   {
