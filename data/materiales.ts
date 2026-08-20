@@ -476,4 +476,34 @@ export const MATERIALES: Material[] = [
       },
     ],
   },
+
+  // ────────────────────────────────────────────────────────────────
+  // Módulo 4 · Tareas (desafío entre módulos, previo al Módulo 4)
+  // ────────────────────────────────────────────────────────────────
+  {
+    id: "mat-m4-desafio",
+    slug: "desafio-implementar-herramienta",
+    publicadoEn: "2026-08-20",
+    moduloId: "m4",
+    tipo: "tareas",
+    titulo: "Tarea: Desafío personal entre módulos",
+    resumen:
+      "Antes del Módulo 4: implementa una de las herramientas vistas en el programa. Tú eliges cuál y sostienes la conversación con la persona que corresponda.",
+    secciones: [
+      {
+        titulo: "El desafío",
+        parrafos: [
+          "Antes del Módulo 4, vas a implementar una de las herramientas vistas hasta ahora. Tú eliges cuál y sostienes la conversación con la persona que corresponda.",
+        ],
+      },
+      {
+        titulo: "Elige una",
+        lista: [
+          "Realizar la conversación desafiante que diseñaste.",
+          "Tener una conversación de reconocimiento.",
+          "Tener una conversación de motivadores.",
+        ],
+      },
+    ],
+  },
 ];
